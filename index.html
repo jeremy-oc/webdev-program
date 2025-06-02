@@ -1,11 +1,621 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebDev Program</title>
+    <title>WebDev Program Content</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        nav {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            background: #e2e8f0;
+            border-color: #cbd5e1;
+        }
+
+        .nav-btn.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        main {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .week-header {
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .week-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .objectives {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .objectives h3 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .objectives ul {
+            margin-left: 1.5rem;
+            list-style-type: disc;
+        }
+
+        .objectives li {
+            padding: 0.25rem 0;
+            color: #475569;
+            margin-left: 0;
+        }
+
+        .section {
+            margin: 2rem 0;
+        }
+
+        .section h3 {
+            color: #1e293b;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .section h4 {
+            color: #374151;
+            font-weight: 500;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        .task {
+            background: #fefefe;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .task-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .task-checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #2563eb;
+        }
+
+        .task-title {
+            font-weight: 600;
+            color: #1e293b;
+            flex: 1;
+        }
+
+        .task.completed {
+            background: #f0f9ff;
+            border-color: #bae6fd;
+        }
+
+        .task.completed .task-title {
+            text-decoration: line-through;
+            color: #64748b;
+        }
+
+        .resource-links {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .resource-link {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.2s ease;
+        }
+
+        .resource-link:hover {
+            background: #1d4ed8;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .nav-link {
+            background: #f1f5f9;
+            color: #475569;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .nav-link:hover {
+            background: #e2e8f0;
+            border-color: #cbd5e1;
+        }
+
+        .nav-link.primary {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .nav-link.primary:hover {
+            background: #1d4ed8;
+        }
+
+        .progress-indicator {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .progress-bar {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .progress-fill {
+            background: #2563eb;
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .coming-soon {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .coming-soon h4 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        .coming-soon p {
+            color: #78350f;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 0.9em;
+            color: #1e293b;
+        }
+
+        /* Fixed: Added proper styling for pre and code block */
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border: 1px solid #374151;
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            white-space: pre;
+        }
+
+        /* Fixed: Better spacing for task content */
+        .task ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .task li {
+            margin: 0.25rem 0;
+        }
+
+        .task p {
+            margin: 0.75rem 0;
+        }
+
+        .task p:first-child {
+            margin-top: 0;
+        }
+
+        .task p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            header,
+            main {
+                padding: 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.75rem;
+            }
+
+            nav {
+                padding: 0.75rem;
+            }
+
+            .nav-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            pre {
+                padding: 1rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello World</h1>
+    <div class="container">
+        <header>
+            <div class="logo">WebDev Program</div>
+            <div class="subtitle">Web Development Course</div>
+        </header>
+
+        <nav>
+            <button class="nav-btn active" onclick="showSection('week1')">Week 1</button>
+            <button class="nav-btn" onclick="showSection('week2')">Week 2 (TBD)</button>
+            <button class="nav-btn" onclick="showSection('week3')">Week 3 (TBD)</button>
+        </nav>
+
+        <main>
+            <section id="week1" class="content-section active">
+                <div class="week-header">
+                    <div class="week-title">Week 1: Development Environment Setup</div>
+                </div>
+
+                <div class="progress-indicator">
+                    <div>Progress: <span id="week1-progress">0</span>% Complete</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="week1-progress-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="objectives">
+                    <h3>Learning Objectives</h3>
+                    <p>By the end of this week, you will be able to:</p>
+                    <ul>
+                        <li>Set up a complete web development environment</li>
+                        <li>Structure a HTML document with semantic elements</li>
+                        <li>Apply CSS styling and layout techniques</li>
+                        <li>Build and deploy a simple personal portfolio website</li>
+                        <li>Use Git and GitHub for version control and hosting of your portfolio</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3>Step 1: Development Environment Setup</h3>
+
+                    <h4>Code Editor Setup</h4>
+                    <p>For this course, we'll be using Visual Studio Code (VS Code) as our primary code editor. VS Code
+                        is an excellent choice for web development because it's free, lightweight, and packed with
+                        features that will make your coding experience smoother. It offers excellent syntax
+                        highlighting, intelligent code completion, built-in terminal, and seamless Git integration. VS
+                        Code also has a vast ecosystem of extensions that we can explore later in the course to enhance
+                        our development workflow.</p>
+
+                    <div class="resource-links">
+                        <a href="https://code.visualstudio.com/" class="resource-link" target="_blank">Visual Studio
+                            Code</a>
+                    </div>
+
+                    <div class="task" data-task="task1-1">
+                        <div class="task-header">
+                            <input type="checkbox" class="task-checkbox" id="task1-1">
+                            <label class="task-title" for="task1-1">Task 1.1: Install VS Code</label>
+                        </div>
+                        <p>Download and install Visual Studio Code for your operating system (Windows, MacOS, Linux).
+                            Once installed, launch VS Code and familiarize yourself with the interface. For now, we'll
+                            use VS Code without any additional extensions to focus on the fundamentals.</p>
+                    </div>
+
+                    <h4>Web Browser Setup</h4>
+                    <p>As web developers, it's crucial to test our websites across different browsers to ensure
+                        compatibility and consistent user experience. Different browsers may render websites slightly
+                        differently, and some features might not work the same way across all browsers. Having multiple
+                        browsers installed allows us to catch potential issues early and deliver a better product to our
+                        users. We recommend installing at least Chrome and Firefox, as they are the most widely used
+                        browsers and offer excellent developer tools.</p>
+
+                    <div class="resource-links">
+                        <a href="https://www.google.com/intl/de/chrome/" class="resource-link" target="_blank">Google
+                            Chrome</a>
+                        <a href="https://www.mozilla.org/de/firefox/new/" class="resource-link"
+                            target="_blank">Firefox</a>
+                        <a href="https://responsively.app/" class="resource-link" target="_blank">Responsively App</a>
+                    </div>
+
+                    <div class="task" data-task="task1-2">
+                        <div class="task-header">
+                            <input type="checkbox" class="task-checkbox" id="task1-2">
+                            <label class="task-title" for="task1-2">Task 1.2: Install different web browsers</label>
+                        </div>
+                        <p>Install Google Chrome and Firefox on your computer. These will be our primary testing
+                            browsers throughout the course. Optionally, you can also install Responsively App, which is
+                            a specialized browser for responsive web development.</p>
+                    </div>
+
+                <div class="section">
+                    <h3>Step 2: Coming tomorrow</h3>
+                    <div class="coming-soon">
+                        <h4>More content coming soon!</h4>
+                        <p>Additional steps and resources will be added tomorrow.</p>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <div></div>
+                    <a href="#" class="nav-link primary" onclick="showSection('week2')">Next: Week 2 →</a>
+                </div>
+            </section>
+
+            <section id="week2" class="content-section">
+                <div class="week-header">
+                    <div class="week-title">Week 2: Content Coming Soon</div>
+                </div>
+
+                <div class="coming-soon">
+                    <h4>Week 2 content in development</h4>
+                    <p>This week's content will be available soon.</p>
+                </div>
+
+                <div class="navigation">
+                    <a href="#" class="nav-link" onclick="showSection('week1')">← Previous: Week 1</a>
+                    <a href="#" class="nav-link primary" onclick="showSection('week3')">Next: Week 3 (TBD) →</a>
+                </div>
+            </section>
+
+            <section id="week3" class="content-section">
+                <div class="week-header">
+                    <div class="week-title">Week 3: To Be Determined</div>
+                </div>
+
+                <div class="coming-soon">
+                    <h4>TBD</h4>
+                    <p>Content for this week is to be determined.</p>
+                </div>
+
+                <div class="navigation">
+                    <a href="#" class="nav-link" onclick="showSection('week2')">← Previous: Week 2</a>
+                    <div></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Task management with localStorage
+        class TaskManager {
+            constructor() {
+                this.loadTasks();
+                this.initializeEventListeners();
+                this.updateAllProgress();
+            }
+
+            loadTasks() {
+                const saved = localStorage.getItem('webdev-tasks');
+                this.completedTasks = saved ? JSON.parse(saved) : {};
+
+                // Apply saved states to checkboxes
+                Object.keys(this.completedTasks).forEach(taskId => {
+                    const checkbox = document.getElementById(taskId);
+                    const taskElement = document.querySelector(`[data-task="${taskId}"]`);
+
+                    if (checkbox && this.completedTasks[taskId]) {
+                        checkbox.checked = true;
+                        if (taskElement) {
+                            taskElement.classList.add('completed');
+                        }
+                    }
+                });
+            }
+
+            saveTasks() {
+                localStorage.setItem('webdev-tasks', JSON.stringify(this.completedTasks));
+            }
+
+            initializeEventListeners() {
+                document.querySelectorAll('.task-checkbox').forEach(checkbox => {
+                    checkbox.addEventListener('change', (e) => {
+                        const taskId = e.target.id;
+                        const taskElement = document.querySelector(`[data-task="${taskId}"]`);
+
+                        this.completedTasks[taskId] = e.target.checked;
+
+                        if (e.target.checked) {
+                            taskElement.classList.add('completed');
+                        } else {
+                            taskElement.classList.remove('completed');
+                        }
+
+                        this.saveTasks();
+                        this.updateProgress(this.getWeekFromTaskId(taskId));
+                    });
+                });
+            }
+
+            getWeekFromTaskId(taskId) {
+                if (taskId.startsWith('task1-')) return 'week1';
+                if (taskId.startsWith('task2-')) return 'week2';
+                if (taskId.startsWith('task3-')) return 'week3';
+                return 'week1';
+            }
+
+            updateProgress(weekId) {
+                const weekTasks = document.querySelectorAll(`#${weekId} .task-checkbox`);
+                const completedTasks = document.querySelectorAll(`#${weekId} .task-checkbox:checked`);
+
+                const progress = weekTasks.length > 0 ? Math.round((completedTasks.length / weekTasks.length) * 100) : 0;
+
+                const progressText = document.getElementById(`${weekId}-progress`);
+                const progressBar = document.getElementById(`${weekId}-progress-bar`);
+
+                if (progressText) progressText.textContent = progress;
+                if (progressBar) progressBar.style.width = `${progress}%`;
+            }
+
+            updateAllProgress() {
+                ['week1', 'week2', 'week4'].forEach(weekId => {
+                    this.updateProgress(weekId);
+                });
+            }
+        }
+
+        // Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Add active class to corresponding nav button
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.textContent.toLowerCase().includes(sectionId.toLowerCase())) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function () {
+            new TaskManager();
+        });
+    </script>
 </body>
+
 </html>
