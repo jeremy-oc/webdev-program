@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -81,6 +82,53 @@
             border-color: #2563eb;
         }
 
+        .topic-nav {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .topic-group {
+            display: none;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .topic-group.active {
+            display: flex;
+        }
+
+        .topic-btn {
+            background: #f8fafc;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .topic-btn:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            color: #475569;
+        }
+
+        .topic-btn.active {
+            background: #dbeafe;
+            color: #1d4ed8;
+            border-color: #bfdbfe;
+        }
+
+        .topic-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         main {
             background: white;
             border-radius: 8px;
@@ -138,6 +186,11 @@
 
         .section {
             margin: 2rem 0;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
         }
 
         .section h3 {
@@ -150,7 +203,7 @@
         .section h4 {
             color: #374151;
             font-weight: 500;
-            margin: 1.5rem 0 0.5rem 0;
+            margin: 0 0 0.5rem 0;
             font-size: 1rem;
         }
 
@@ -212,6 +265,14 @@
 
         .resource-link:hover {
             background: #1d4ed8;
+        }
+
+        .resource-link.freecodecamp {
+            background: #006400;
+        }
+
+        .resource-link.freecodecamp:hover {
+            background: #004d00;
         }
 
         .navigation {
@@ -289,6 +350,83 @@
             color: #78350f;
         }
 
+        .project-showcase {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .project-showcase h3 {
+            color: #0369a1;
+            margin-bottom: 1rem;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .project-example {
+            text-align: center;
+        }
+
+        .project-example img {
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .project-example h4 {
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-example p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Fixed: Section-level image styling for Introduction to HTML */
+        .section img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Specific styling for images that appear in content paragraphs */
+        .section div img {
+            margin: 1.5rem auto;
+        }
+
+        .highlight-box {
+            background: #ecfdf5;
+            border: 1px solid #10b981;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .highlight-box h4 {
+            color: #047857;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box p {
+            color: #065f46;
+        }
+
         code {
             background: #f1f5f9;
             padding: 0.2rem 0.4rem;
@@ -298,7 +436,6 @@
             color: #1e293b;
         }
 
-        /* Fixed: Added proper styling for pre and code block */
         pre {
             background: #1e293b;
             color: #e2e8f0;
@@ -318,11 +455,14 @@
             white-space: pre;
         }
 
-        /* Fixed: Better spacing for task content */
         .task ul {
             margin-left: 1.5rem;
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
+        }
+
+        div ul {
+            margin-left: 1.5rem;
         }
 
         .task li {
@@ -355,7 +495,8 @@
                 font-size: 1.75rem;
             }
 
-            nav {
+            nav,
+            .topic-nav {
                 padding: 0.75rem;
             }
 
@@ -364,9 +505,24 @@
                 font-size: 0.9rem;
             }
 
+            .topic-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
             pre {
                 padding: 1rem;
                 font-size: 0.8rem;
+            }
+
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            /* Responsive image styling */
+            .section img {
+                max-width: 100%;
+                margin: 1rem 0;
             }
         }
     </style>
@@ -378,26 +534,154 @@
             <div class="logo">WebDev Program</div>
             <div class="subtitle">Web Development Course</div>
         </header>
-
         <nav>
-            <button class="nav-btn active" onclick="showSection('week1')">Week 1</button>
+            <button class="nav-btn active" onclick="showSection('project-intro')">Introductory Project</button>
+            <button class="nav-btn" onclick="showSection('week1')">Week 1</button>
             <button class="nav-btn" onclick="showSection('week2')">Week 2 (TBD)</button>
             <button class="nav-btn" onclick="showSection('week3')">Week 3 (TBD)</button>
         </nav>
-
+        <!-- Topic Navigation -->
+        <nav class="topic-nav" id="topic-nav">
+            <!-- Project Introduction Topics -->
+            <div class="topic-group active" id="topics-project-intro">
+                <button class="topic-btn active" onclick="scrollToTopic('project-overview')">Project Overview</button>
+                <button class="topic-btn" onclick="scrollToTopic('portfolio-features')">Portfolio Features</button>
+                <button class="topic-btn" onclick="scrollToTopic('learning-path')">Learning Path</button>
+            </div>
+            <!-- Week 1 Topics -->
+            <div class="topic-group" id="topics-week1">
+                <button class="topic-btn active" onclick="scrollToTopic('step1')">Development Environment Setup</button>
+                <button class="topic-btn" onclick="scrollToTopic('step2')">Introduction to HTML</button>
+                <button class="topic-btn" onclick="scrollToTopic('step3')">Introduction to CSS</button>
+            </div>
+            <!-- Week 2 Topics -->
+            <div class="topic-group" id="topics-week2">
+                <button class="topic-btn">Topics TBD</button>
+            </div>
+            <!-- Week 3 Topics -->
+            <div class="topic-group" id="topics-week3">
+                <button class="topic-btn">Topics TBD</button>
+            </div>
+        </nav>
         <main>
-            <section id="week1" class="content-section active">
+            <!-- Project Introduction Section -->
+            <section id="project-intro" class="content-section active">
+                <div class="week-header">
+                    <div class="week-title">Your First Web Development Project: Personal Portfolio</div>
+                </div>
+                <div class="section active" id="project-overview">
+                    <h3>What You'll Build</h3>
+                    <p>Welcome to your web development journey! Throughout this course, you'll be building a personal
+                        portfolio website that showcases your skills, projects, and
+                        personality to potential employers and clients.</p>
+                    <div class="project-showcase">
+                        <h3>🎯 Your Portfolio Project</h3>
+                        <p>By the end of this course, you'll have created a professional portfolio website with several
+                            projects that you can
+                            proudly share with the world!</p>
+                    </div>
+                    <div class="project-gallery">
+                        <div class="project-example">
+                            <h4>Final Result: Your Professional Portfolio</h4>
+                            <img src="assets/img/portfolio_example/portfolio_example.jpeg"
+                                alt="Example of a completed personal portfolio website with professional styling">
+                            <p>A fully styled, responsive portfolio with modern design, interactive elements, and
+                                professional presentation.</p>
+                        </div>
+                        <div class="project-example">
+                            <h4>Starting Point: HTML Structure</h4>
+                            <img src="assets/img/portfolio_example/portfolio_example_no_css.jpeg"
+                                alt="Same portfolio website showing only HTML structure without CSS styling">
+                            <p>We'll start with the basic HTML structure and progressively enhance it with CSS styling
+                                and interactivity.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-box">
+                        <h4>🚀 Why Build a Portfolio?</h4>
+                        <p>A portfolio website is essential for any web developer. It's your digital business card,
+                            showcasing your skills and helping you land your first (or next) web development job. Plus,
+                            building it teaches you all the fundamentals of web development!</p>
+                    </div>
+                </div>
+                <div class="section" id="portfolio-features">
+                    <h3>Portfolio Features You'll Create</h3>
+                    <p>Your portfolio will include all the essential sections that employers and clients look for:</p>
+                    <div class="task">
+                        <div class="task-header">
+                            <div class="task-title">📋 Portfolio Sections</div>
+                        </div>
+                        <ul>
+                            <li><strong>Header & Navigation:</strong> Professional site navigation with smooth scrolling
+                            </li>
+                            <li><strong>About Me:</strong> Personal introduction with professional photo</li>
+                            <li><strong>Skills:</strong> Visual representation of your technical abilities</li>
+                            <li><strong>Projects:</strong> Showcase of your work with descriptions and links</li>
+                            <li><strong>Contact:</strong> Professional contact form and social media links</li>
+                            <li><strong>Footer:</strong> Copyright, contact information and legal links</li>
+                        </ul>
+                    </div>
+                    <h4>Technical Features You'll Learn</h4>
+                    <div class="task">
+                        <div class="task-header">
+                            <div class="task-title">🛠️ Development Skills</div>
+                        </div>
+                        <ul>
+                            <li><strong>Semantic HTML:</strong> Proper document structure and accessibility</li>
+                            <li><strong>Modern CSS:</strong> Flexbox, Grid, responsive design, and animations</li>
+                            <li><strong>Responsive Design:</strong> Works perfectly on mobile, tablet, and desktop</li>
+                            <li><strong>Git & GitHub:</strong> Version control and hosting your live website</li>
+                            <li><strong>Web Performance:</strong> Fast loading and optimized images</li>
+                            <li><strong>SEO Basics:</strong> Making your site discoverable by search engines</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section" id="learning-path">
+                    <h3>Your Learning Journey</h3>
+                    <p>We'll build your portfolio step-by-step, learning new concepts and immediately applying them to
+                        your project. This hands-on approach ensures you understand not just the theory, but how to
+                        implement real-world solutions.</p>
+                    <h4>Learning Approach</h4>
+                    <div class="highlight-box">
+                        <h4>📚 Learn by Doing</h4>
+                        <p>First, you'll work through guided tutorials to learn the fundamentals. Then, you'll
+                            immediately apply those skills to build your own portfolio. This combination of guided
+                            learning and practical application is the fastest way to master web development!</p>
+                    </div>
+                    <div class="task">
+                        <div class="task-header">
+                            <div class="task-title">🎯 Week 1 Focus: HTML & CSS Foundations</div>
+                        </div>
+                        <ul>
+                            <li><strong>Learn HTML Basics:</strong> Complete FreeCodeCamp's Cat Photo App tutorial</li>
+                            <li><strong>Apply to Portfolio:</strong> Build your portfolio's HTML structure</li>
+                            <li><strong>Learn CSS Styling:</strong> Make your portfolio beautiful and responsive</li>
+                            <li><strong>Deploy Online:</strong> Share your portfolio with the world using GitHub Pages
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="highlight-box">
+                        <h4>🎉 Ready to Start?</h4>
+                        <p>Your journey to becoming a web developer starts now! In Week 1, you'll set up your
+                            development environment and begin building your portfolio. By the end of the week, you'll
+                            have a functional website online that you can share with friends and family.</p>
+                    </div>
+                </div>
+                <div class="navigation">
+                    <div></div>
+                    <a href="#" class="nav-link primary" onclick="showSection('week1')">Start Week 1: Setup & HTML →</a>
+                </div>
+            </section>
+            <!-- Week 1 Section -->
+            <section id="week1" class="content-section">
                 <div class="week-header">
                     <div class="week-title">Week 1: Development Environment Setup</div>
                 </div>
-
                 <div class="progress-indicator">
                     <div>Progress: <span id="week1-progress">0</span>% Complete</div>
                     <div class="progress-bar">
                         <div class="progress-fill" id="week1-progress-bar" style="width: 0%"></div>
                     </div>
                 </div>
-
                 <div class="objectives">
                     <h3>Learning Objectives</h3>
                     <p>By the end of this week, you will be able to:</p>
@@ -409,10 +693,8 @@
                         <li>Use Git and GitHub for version control and hosting of your portfolio</li>
                     </ul>
                 </div>
-
-                <div class="section">
+                <div class="section active" id="step1">
                     <h3>Step 1: Development Environment Setup</h3>
-
                     <h4>Code Editor Setup</h4>
                     <p>For this course, we'll be using Visual Studio Code (VS Code) as our primary code editor. VS Code
                         is an excellent choice for web development because it's free, lightweight, and packed with
@@ -420,12 +702,10 @@
                         highlighting, intelligent code completion, built-in terminal, and seamless Git integration. VS
                         Code also has a vast ecosystem of extensions that we can explore later in the course to enhance
                         our development workflow.</p>
-
                     <div class="resource-links">
                         <a href="https://code.visualstudio.com/" class="resource-link" target="_blank">Visual Studio
                             Code</a>
                     </div>
-
                     <div class="task" data-task="task1-1">
                         <div class="task-header">
                             <input type="checkbox" class="task-checkbox" id="task1-1">
@@ -435,7 +715,6 @@
                             Once installed, launch VS Code and familiarize yourself with the interface. For now, we'll
                             use VS Code without any additional extensions to focus on the fundamentals.</p>
                     </div>
-
                     <h4>Web Browser Setup</h4>
                     <p>As web developers, it's crucial to test our websites across different browsers to ensure
                         compatibility and consistent user experience. Different browsers may render websites slightly
@@ -443,7 +722,6 @@
                         browsers installed allows us to catch potential issues early and deliver a better product to our
                         users. We recommend installing at least Chrome and Firefox, as they are the most widely used
                         browsers and offer excellent developer tools.</p>
-
                     <div class="resource-links">
                         <a href="https://www.google.com/intl/de/chrome/" class="resource-link" target="_blank">Google
                             Chrome</a>
@@ -451,7 +729,6 @@
                             target="_blank">Firefox</a>
                         <a href="https://responsively.app/" class="resource-link" target="_blank">Responsively App</a>
                     </div>
-
                     <div class="task" data-task="task1-2">
                         <div class="task-header">
                             <input type="checkbox" class="task-checkbox" id="task1-2">
@@ -461,19 +738,17 @@
                             browsers throughout the course. Optionally, you can also install Responsively App, which is
                             a specialized browser for responsive web development.</p>
                     </div>
-
                     <h4>Git & GitHub Setup</h4>
                     <p>Git is a version control system that tracks changes in your code, allowing you to collaborate
                         with others and maintain a history of your project. GitHub is a cloud-based platform that hosts
                         Git repositories, making it easy to share your code, collaborate with others, and showcase your
                         work. Throughout this course, you'll use GitHub to store your projects and build an impressive
                         portfolio of your web development journey.</p>
-
                     <div class="resource-links">
-                        <a href="https://git-scm.com/downloads" class="resource-link" target="_blank">Git Download Page</a>
+                        <a href="https://git-scm.com/downloads" class="resource-link" target="_blank">Git Download
+                            Page</a>
                         <a href="https://github.com/" class="resource-link" target="_blank">GitHub</a>
                     </div>
-
                     <div class="task" data-task="task1-3">
                         <div class="task-header">
                             <input type="checkbox" class="task-checkbox" id="task1-3">
@@ -481,90 +756,223 @@
                                 session with help)</label>
                         </div>
                         <div>
-                            <p><em>Note: Getting the connection with GitHub running is a bit tricky as it requires setting up an SSH connection. The initial setup might take some guidance that we can handle during an input session. Here is a guide to set it up for different operating systems: <br><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank">Generating a SSH key</a><br><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account" target="_blank">Adding the SSH key to GitHub</a></em></p>
+                            <p><em>Note: Getting the connection with GitHub running is a bit tricky as it requires
+                                    setting up an SSH connection. The initial setup might take some guidance that we can
+                                    handle during an input session. Here is a guide to set it up for different operating
+                                    systems: <br><a
+                                        href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent"
+                                        target="_blank">Generating a SSH key</a><br><a
+                                        href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account"
+                                        target="_blank">Adding the SSH key to GitHub</a></em></p>
                             <p><strong>Step 1:</strong> Download and install Git for your operating system from the link
                                 above.</p>
-
                             <p><strong>Step 2:</strong> Create a free GitHub account at github.com if you don't already
                                 have one.</p>
-
                             <p><strong>Step 3:</strong> Create a new repository on GitHub:</p>
                             <ul>
                                 <li>Click the "+" icon in the top right corner of GitHub</li>
                                 <li>Select "New repository"</li>
-                                <li>Name your repository (e.g., "my-first-website")</li>
+                                <li>Name your repository (e.g., "my-portfolio-website")</li>
                                 <li>Make sure it's set to "Public"</li>
                                 <li>Do NOT initialize with README, .gitignore, or license</li>
                                 <li>Click "Create repository"</li>
                             </ul>
-
                             <p><strong>Step 4:</strong> Set up your local project:</p>
                             <ul>
                                 <li>Create a new folder on your computer for this project</li>
                                 <li>Open your terminal or command prompt</li>
                                 <li>Navigate to your project folder using the <code>cd</code> command</li>
                             </ul>
-
                             <p><strong>Step 5:</strong> Initialize your Git repository and push to GitHub by running
                                 these commands one by one:</p>
-                            <pre><code>echo "# Hello World" >> README.md
+                            <pre><code>echo "# My Portfolio Website" >> README.md
 git init
 git add README.md
-git commit -m "first commit"
+git commit -m "Initial commit: Add README"
 git branch -M main
 git remote add origin https://github.com/username/repository-name.git
 git push -u origin main</code></pre>
-
                             <p><em>Note: Replace "username" with your GitHub username and "repository-name" with the
                                     name of your repository.</em></p>
-
                             <p>After completing these steps, refresh your GitHub repository page. You should see your
-                                README.md file with "Hello World" content, confirming that your local repository is
-                                successfully connected to GitHub!</p>
+                                README.md file, confirming that your local repository is successfully connected to
+                                GitHub!</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="section">
-                    <h3>Step 2: Coming tomorrow</h3>
+                <div class="section" id="step2">
+                    <h3>Step 2: Introduction to HTML</h3>
+                    <p>HTML (HyperText Markup Language) is the foundation of every website. Think of it as the skeleton
+                        that gives structure to web pages. You'll learn HTML through a hands-on approach: first
+                        mastering the basics with a guided tutorial, then applying those skills to build your portfolio!
+                    </p>
+                    <p>
+                        At first we will focus on building the "Hero" and "About me" section of the portfolio.
+                    </p>
+                    <div>
+                        <img src="assets/img/portfolio_example/portfolio_example_no_css_top.jpeg"
+                            alt="Portfolio only with hero section and about me section and without CSS styling">
+                    </div>
+                    <h4>Part 1: Learn HTML Fundamentals</h4>
+                    <p>Before building your portfolio, you'll learn HTML through FreeCodeCamp's interactive tutorial.
+                        This tutorial teaches you HTML by building a fun Cat Photo App, covering all the essential
+                        elements you'll need for your portfolio.</p>
+                    <p>
+                        Beside the interactive Cat Photo App Tutorial there are some introductory HTML articles linked
+                        that might help you better understand the structure of HTML documents and elements.
+                    </p>
+                    <div class="resource-links">
+                        <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-html-by-building-a-cat-photo-app/step-1"
+                            class="resource-link freecodecamp" target="_blank">🐱 Cat Photo App Tutorial</a>
+                        <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics"
+                            class="resource-link" target="_blank">MDN HTML Basics</a>
+                        <a href="https://www.w3schools.com/html/html_intro.asp" class="resource-link"
+                            target="_blank">W3Schools HTML Introduction</a>
+                    </div>
+                    <div class="task" data-task="task2-1">
+                        <div class="task-header">
+                            <input type="checkbox" class="task-checkbox" id="task2-1">
+                            <label class="task-title" for="task2-1">Task 2.1: Complete the Cat Photo App
+                                Tutorial</label>
+                        </div>
+                        <p>Note: For the tasks currently available the first half of the tutorial (the first 30-40
+                            steps) might be enough. To build the whole portfolio the content of the later steps becomes
+                            relevant.</p>
+                        <p>Work through FreeCodeCamp's "Learn HTML by Building a Cat Photo App" tutorial. This
+                            interactive tutorial will teach you:</p>
+                        <ul>
+                            <li>HTML document structure and basic elements</li>
+                            <li>Headings, paragraphs, and text formatting</li>
+                            <li>Images, links, and lists</li>
+                            <li>Forms and input elements</li>
+                            <li>HTML attributes and semantic elements</li>
+                        </ul>
+                        <p><strong>Time estimate:</strong> 1-2 hours. Take your time and make sure you understand each
+                            step before moving forward!</p>
+                    </div>
+                    <h4>Part 2: Build Your Portfolio HTML Structure</h4>
+                    <p>Now that you've learned HTML fundamentals through the Cat Photo App, it's time to apply those
+                        skills to create your own portfolio website! You'll use the same HTML elements and concepts, but
+                        arrange them to showcase your professional information.</p>
+                    <div class="project-showcase">
+                        <h3>🏗️ From Cat Photos to Professional Portfolio</h3>
+                        <p>You'll use the same HTML elements from the tutorial (headings, paragraphs, images, lists,
+                            forms) but arrange them to create a professional portfolio structure.</p>
+                    </div>
+                    <h4>Portfolio HTML Structure</h4>
+                    <p>Your portfolio will have these main sections, each using HTML elements you learned in the Cat
+                        Photo App:</p>
+                    <div class="task" data-task="task2-2">
+                        <div class="task-header">
+                            <input type="checkbox" class="task-checkbox" id="task2-2">
+                            <label class="task-title" for="task2-2">Task 2.2: Create your portfolio's HTML
+                                foundation</label>
+                        </div>
+                        <p>Create a new file called <code>index.html</code> in your project folder and build the basic
+                            structure:</p>
+                        <p><strong>Step 1: HTML Document Structure</strong></p>
+                        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;[Your Name] - Web Developer Portfolio&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- Your portfolio content will go here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        <p><strong>Step 2: Build the Hero Section:</strong></p>
+                        <ul>
+                            <li>Add a <code>&lt;header&gt;</code> that contains a "logo" text and a
+                                <code>&lt;nav&gt;</code>
+                                with a list of links with empty <code>href</code> attribute for now
+                            </li>
+                            <li>Add a profile image (either AI generated or a real picture) using
+                                <code>&lt;img&gt;</code> with proper <code>src</code> and
+                                <code>alt</code> attributes
+                            </li>
+                            <li>Add your name as the main heading (<code>&lt;h1&gt;</code>)</li>
+                            <li>Add a subtitle describing what you do (e.g., "Aspiring Web Developer")</li>
+                            <li>Add a one sentence paragraph going a little bit more into detail</li>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="task" data-task="task2-3">
+                        <div class="task-header">
+                            <input type="checkbox" class="task-checkbox" id="task2-3">
+                            <label class="task-title" for="task2-3">Task 2.3: Add content to your About Me
+                                section</label>
+                        </div>
+                        <p>Add an About Me section and fill it with real content:</p>
+                        <ul>
+                            <li>Add a greeting as a <code>&lt;h3&gt;</code> element</li>
+                            <li>Add an emoji that fits you inside of a <code>&lt;div&gt;</code></li>
+                            <li>Write a paragraph about yourself (2-3 sentences)</li>
+                            <li>Give your sections proper <code>id</code> attributes (like <code>id="about"</code>)</li>
+                        </ul>
+                    </div>
+                    <h4>Test Your HTML</h4>
+                    <div class="highlight-box">
+                        <h4>🔍 View Your Work</h4>
+                        <p>Open your <code>index.html</code> file in your web browser to see your portfolio taking
+                            shape! It won't look pretty yet (no styling), but you should see all your content structured
+                            properly.</p>
+                    </div>
+                    <div class="task" data-task="task2-4">
+                        <div class="task-header">
+                            <input type="checkbox" class="task-checkbox" id="task2-4">
+                            <label class="task-title" for="task2-4">Task 2.4: Commit your HTML to GitHub</label>
+                        </div>
+                        <p>Save your progress to GitHub:</p>
+                        <ul>
+                            <li>Save your <code>index.html</code> file</li>
+                            <li>Open terminal/command prompt in your project folder</li>
+                            <li>Run: <code>git add .</code></li>
+                            <li>Run: <code>git commit -m "Add portfolio HTML structure"</code></li>
+                            <li>Run: <code>git push</code></li>
+                        </ul>
+                        <p>Your portfolio HTML is now saved on GitHub! 🎉</p>
+                    </div>
+                    <p><strong>Congratulations!</strong> You've successfully learned HTML fundamentals through the Cat
+                        Photo App and applied those skills to create your portfolio's structure. Your website now has
+                        all the essential sections - it just needs some styling to make it beautiful, which we'll do in
+                        the next section with CSS!</p>
+                </div>
+                <div class="section" id="step3">
+                    <h3>Step 3: Introduction to CSS</h3>
                     <div class="coming-soon">
-                        <h4>More content coming soon!</h4>
-                        <p>Additional steps and resources will be added tomorrow.</p>
+                        <h4>CSS content coming soon!</h4>
+                        <p>Discover how to style your HTML with CSS, including layout, colors, fonts, and responsive
+                            design.</p>
                     </div>
                 </div>
-
                 <div class="navigation">
-                    <div></div>
+                    <a href="#" class="nav-link" onclick="showSection('project-intro')">← Project Introduction</a>
                     <a href="#" class="nav-link primary" onclick="showSection('week2')">Next: Week 2 →</a>
                 </div>
             </section>
-
             <section id="week2" class="content-section">
                 <div class="week-header">
                     <div class="week-title">Week 2: Content Coming Soon</div>
                 </div>
-
                 <div class="coming-soon">
                     <h4>Week 2 content in development</h4>
                     <p>This week's content will be available soon.</p>
                 </div>
-
                 <div class="navigation">
                     <a href="#" class="nav-link" onclick="showSection('week1')">← Previous: Week 1</a>
                     <a href="#" class="nav-link primary" onclick="showSection('week3')">Next: Week 3 (TBD) →</a>
                 </div>
             </section>
-
             <section id="week3" class="content-section">
                 <div class="week-header">
                     <div class="week-title">Week 3: To Be Determined</div>
                 </div>
-
                 <div class="coming-soon">
                     <h4>TBD</h4>
                     <p>Content for this week is to be determined.</p>
                 </div>
-
                 <div class="navigation">
                     <a href="#" class="nav-link" onclick="showSection('week2')">← Previous: Week 2</a>
                     <div></div>
@@ -572,7 +980,6 @@ git push -u origin main</code></pre>
             </section>
         </main>
     </div>
-
     <script>
         // Task management with localStorage
         class TaskManager {
@@ -581,16 +988,13 @@ git push -u origin main</code></pre>
                 this.initializeEventListeners();
                 this.updateAllProgress();
             }
-
             loadTasks() {
                 const saved = localStorage.getItem('webdev-tasks');
                 this.completedTasks = saved ? JSON.parse(saved) : {};
-
                 // Apply saved states to checkboxes
                 Object.keys(this.completedTasks).forEach(taskId => {
                     const checkbox = document.getElementById(taskId);
                     const taskElement = document.querySelector(`[data-task="${taskId}"]`);
-
                     if (checkbox && this.completedTasks[taskId]) {
                         checkbox.checked = true;
                         if (taskElement) {
@@ -599,84 +1003,121 @@ git push -u origin main</code></pre>
                     }
                 });
             }
-
             saveTasks() {
                 localStorage.setItem('webdev-tasks', JSON.stringify(this.completedTasks));
             }
-
             initializeEventListeners() {
                 document.querySelectorAll('.task-checkbox').forEach(checkbox => {
                     checkbox.addEventListener('change', (e) => {
                         const taskId = e.target.id;
                         const taskElement = document.querySelector(`[data-task="${taskId}"]`);
-
                         this.completedTasks[taskId] = e.target.checked;
-
                         if (e.target.checked) {
                             taskElement.classList.add('completed');
                         } else {
                             taskElement.classList.remove('completed');
                         }
-
                         this.saveTasks();
                         this.updateProgress(this.getWeekFromTaskId(taskId));
                     });
                 });
             }
-
             getWeekFromTaskId(taskId) {
                 if (taskId.startsWith('task1-')) return 'week1';
-                if (taskId.startsWith('task2-')) return 'week2';
-                if (taskId.startsWith('task3-')) return 'week3';
+                if (taskId.startsWith('task2-')) return 'week1'; // HTML tasks are part of week1
+                if (taskId.startsWith('task3-')) return 'week1'; // CSS tasks are part of week1
                 return 'week1';
             }
-
             updateProgress(weekId) {
                 const weekTasks = document.querySelectorAll(`#${weekId} .task-checkbox`);
                 const completedTasks = document.querySelectorAll(`#${weekId} .task-checkbox:checked`);
-
                 const progress = weekTasks.length > 0 ? Math.round((completedTasks.length / weekTasks.length) * 100) : 0;
-
                 const progressText = document.getElementById(`${weekId}-progress`);
                 const progressBar = document.getElementById(`${weekId}-progress-bar`);
-
                 if (progressText) progressText.textContent = progress;
                 if (progressBar) progressBar.style.width = `${progress}%`;
             }
-
             updateAllProgress() {
-                ['week1', 'week2', 'week4'].forEach(weekId => {
+                ['week1'].forEach(weekId => {
                     this.updateProgress(weekId);
                 });
             }
         }
-
         // Navigation
         function showSection(sectionId) {
             // Hide all sections
             document.querySelectorAll('.content-section').forEach(section => {
                 section.classList.remove('active');
             });
-
             // Remove active class from all nav buttons
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-
+            // Hide all topic groups
+            document.querySelectorAll('.topic-group').forEach(group => {
+                group.classList.remove('active');
+            });
             // Show selected section
             document.getElementById(sectionId).classList.add('active');
-
             // Add active class to corresponding nav button
             document.querySelectorAll('.nav-btn').forEach(btn => {
-                if (btn.textContent.toLowerCase().includes(sectionId.toLowerCase())) {
+                if (btn.textContent.toLowerCase().includes(sectionId.toLowerCase()) ||
+                    (sectionId === 'project-intro' && btn.textContent.includes('Project Introduction'))) {
                     btn.classList.add('active');
                 }
             });
+            // Show corresponding topic group
+            const topicGroup = document.getElementById(`topics-${sectionId}`);
+            if (topicGroup) {
+                topicGroup.classList.add('active');
+            }
+            // Reset topic button states
+            document.querySelectorAll('.topic-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Activate first topic button for the current section and show first subsection
+            const firstTopicBtn = document.querySelector(`#topics-${sectionId} .topic-btn:first-child`);
+            if (firstTopicBtn && !firstTopicBtn.disabled) {
+                firstTopicBtn.classList.add('active');
+                // Show the first section for the selected week/section
+                const firstSection = document.querySelector(`#${sectionId} .section:first-child`);
+                if (firstSection) {
+                    firstSection.classList.add('active');
+                }
+            }
         }
-
+        function scrollToTopic(topicId) {
+            // Remove active class from all topic buttons in current group
+            const activeGroup = document.querySelector('.topic-group.active');
+            if (activeGroup) {
+                activeGroup.querySelectorAll('.topic-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+            }
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            // Hide all sections in the current week
+            const currentWeek = document.querySelector('.content-section.active');
+            if (currentWeek) {
+                currentWeek.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+            }
+            // Show the selected topic section
+            const topicElement = document.getElementById(topicId);
+            if (topicElement) {
+                topicElement.classList.add('active');
+                topicElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
         // Initialize the app
         document.addEventListener('DOMContentLoaded', function () {
             new TaskManager();
+            // Start with project introduction active
+            showSection('project-intro');
         });
     </script>
 </body>
