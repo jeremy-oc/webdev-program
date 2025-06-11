@@ -31,12 +31,39 @@ Your portfolio will include all the essential sections that employers and client
 ### 📋 Portfolio Sections
 
 - **Header & Navigation**: Professional site navigation with smooth scrolling
-- **About Me**: Personal introduction with professional photo
+- **Hero**: First impression with professional photo (or avatar)
+- **About Me**: Personal introduction
 - **Skills**: Visual representation of your technical abilities
-- **Projects**: Showcase of your work with descriptions and links
+- **Projects**: Showcase of your work with descriptions and 
+- **FAQ**: Section with Frequently Asked Questions (optional)
 - **Contact**: Professional contact form and social media links
 - **Footer**: Copyright, contact information and legal links
 
+#### Header with Navigation:
+![Navigation in Header](assets/img/portfolio_example_header.jpeg)
+
+#### Hero Section
+Can be also included in the header based on preferences.
+
+![Hero Section](assets/img/portfolio_example_hero.jpeg)
+
+#### About Me Section
+![About Me Section](assets/img/portfolio_example_faq.jpeg)
+
+#### Skills Section
+![Skills Section](assets/img/portfolio_example_skills.jpeg)
+
+#### Projects Section
+![Projects Section](assets/img/portfolio_example_projects.jpeg)
+
+#### FAQ Section
+![FAQ Section](assets/img/portfolio_example_faq.jpeg)
+
+#### Contact Section
+![Contact Section](assets/img/portfolio_example_contact.jpeg)
+
+#### Footer Section
+![Footer Section](assets/img/portfolio_example_footer.jpeg)
 ### 🛠️ Development Skills
 
 - **Semantic HTML**: Proper document structure and accessibility
