@@ -2,9 +2,20 @@
 
 ## CSS Layout Basics
 
-WIP! Tasks and tutorials will follow!
+#### Getting Started:
+This section provides all the content necessary to learn about layouting more complex website designs using CSS.
 
-### Display Property (Block, Inline, Inline-block)
+For the introduction to HTML & CSS we will be learning with the [The Odin Project](https://www.theodinproject.com) course created by Erik Trautman and the [Responsive Web Design] course by FreeCodeCamp.
+
+### Task 1
+1. Work through the [Flexbox](https://www.theodinproject.com/paths/foundations/courses/foundations#flexbox) section of the "The Odin Project" Foundations course.
+2. Interactivly work through the [Learn CSS Flexbox by building a Photo Gallery](https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-css-flexbox-by-building-a-photo-gallery/) course.
+3. If you prefer a crash course like tutorial there is a good overview available on YouTube by Traversy Media [Flexbox Crash Course](https://www.youtube.com/watch?v=3YW65K6LcIA&t=496s)
+4. Additionally you can strengthen your CSS Flexbox skills in the "Flexbox Froggy" game: [Flexbox Froggy](https://flexboxfroggy.com/)
+
+### Additional Properties and Recap of the content
+
+#### Display Property (Block, Inline, Inline-block)
 
 The `display` property determines how an element behaves in the document flow and how it interacts with other elements.
 
@@ -69,7 +80,7 @@ The `display` property determines how an element behaves in the document flow an
 }
 ```
 
-### Normal Document Flow
+#### Normal Document Flow
 
 Elements in normal flow are laid out according to their source order and display type:
 
@@ -99,7 +110,7 @@ Elements in normal flow are laid out according to their source order and display
 }
 ```
 
-### CSS Positioning (Static, Relative, Absolute, Fixed)
+#### CSS Positioning (Static, Relative, Absolute, Fixed)
 
 **Static Positioning (Default):**
 ```css
@@ -195,9 +206,7 @@ Elements in normal flow are laid out according to their source order and display
 
 ---
 
-## Flexbox Layout
-
-### Flex Container and Flex Items
+#### Flex Container and Flex Items
 
 Flexbox is a one-dimensional layout method for arranging items in rows or columns.
 
@@ -238,7 +247,7 @@ Flexbox is a one-dimensional layout method for arranging items in rows or column
 }
 ```
 
-### Main Axis and Cross Axis
+#### Main Axis and Cross Axis
 
 **Flex Direction:**
 ```css
@@ -264,7 +273,7 @@ Flexbox is a one-dimensional layout method for arranging items in rows or column
 }
 ```
 
-### Flex Properties for Alignment and Distribution
+#### Flex Properties for Alignment and Distribution
 
 **Justify Content (Main Axis):**
 ```css
@@ -398,226 +407,10 @@ Flexbox is a one-dimensional layout method for arranging items in rows or column
 
 ---
 
-## CSS Grid Layout
-
-### Grid Container and Grid Items
-
-CSS Grid is a two-dimensional layout system for creating complex layouts with rows and columns.
-
-**Creating a Grid Container:**
-```css
-.grid-container {
-    display: grid;
-    /* All direct children become grid items */
-}
-
-/* Inline grid */
-.inline-grid {
-    display: inline-grid;
-}
-```
-
-**Basic Grid Example:**
-```html
-<div class="grid-container">
-    <div class="grid-item">1</div>
-    <div class="grid-item">2</div>
-    <div class="grid-item">3</div>
-    <div class="grid-item">4</div>
-    <div class="grid-item">5</div>
-    <div class="grid-item">6</div>
-</div>
-```
-
-```css
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
-    grid-template-rows: 100px 100px;    /* 2 rows of 100px each */
-    gap: 10px;
-    background-color: lightgray;
-    padding: 10px;
-}
-
-.grid-item {
-    background-color: lightblue;
-    padding: 20px;
-    text-align: center;
-}
-```
-
-### Creating Grid Templates
-
-**Grid Template Columns and Rows:**
-```css
-.grid-examples {
-    display: grid;
-    
-    /* Fixed sizes */
-    grid-template-columns: 200px 300px 100px;
-    
-    /* Flexible units */
-    grid-template-columns: 1fr 2fr 1fr; /* fractions of available space */
-    
-    /* Mixed units */
-    grid-template-columns: 200px 1fr 100px;
-    
-    /* Repeat function */
-    grid-template-columns: repeat(3, 1fr); /* repeat 1fr three times */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* responsive columns */
-    
-    /* Auto-sizing */
-    grid-template-columns: auto auto auto; /* size based on content */
-}
-```
-
-**Grid Template Areas:**
-```css
-.layout-grid {
-    display: grid;
-    grid-template-areas: 
-        "header header header"
-        "sidebar main main"
-        "footer footer footer";
-    grid-template-columns: 200px 1fr 1fr;
-    grid-template-rows: 80px 1fr 60px;
-    min-height: 100vh;
-    gap: 10px;
-}
-
-.header { grid-area: header; }
-.sidebar { grid-area: sidebar; }
-.main { grid-area: main; }
-.footer { grid-area: footer; }
-```
-
-**Grid Lines and Positioning:**
-```css
-.positioned-item {
-    /* Position by line numbers */
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    
-    /* Shorthand */
-    grid-column: 2 / 4;  /* start / end */
-    grid-row: 1 / 3;
-    
-    /* Span notation */
-    grid-column: 2 / span 2;  /* start at line 2, span 2 columns */
-    grid-row: span 2;         /* span 2 rows from auto-placement */
-    
-    /* Ultra shorthand */
-    grid-area: 1 / 2 / 3 / 4; /* row-start / col-start / row-end / col-end */
-}
-```
-
-### Grid Areas and Responsive Grids
-
-**Named Grid Lines:**
-```css
-.named-lines {
-    display: grid;
-    grid-template-columns: 
-        [sidebar-start] 250px 
-        [sidebar-end main-start] 1fr 
-        [main-end];
-    grid-template-rows: 
-        [header-start] 80px 
-        [header-end content-start] 1fr 
-        [content-end];
-}
-
-.main-content {
-    grid-column: main-start / main-end;
-    grid-row: content-start / content-end;
-}
-```
-
-**Auto-placement and Dense Packing:**
-```css
-.auto-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: 150px;
-    gap: 15px;
-    grid-auto-flow: row;    /* default: fill rows first */
-    grid-auto-flow: column; /* fill columns first */
-    grid-auto-flow: dense;  /* pack items densely */
-}
-```
-
-**Responsive Grid Examples:**
-
-**1. Magazine Layout:**
-```css
-.magazine-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 200px;
-    gap: 20px;
-}
-
-.featured-article {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-```
-
-**2. Dashboard Layout:**
-```css
-.dashboard {
-    display: grid;
-    grid-template-areas:
-        "header header header"
-        "sidebar main main"
-        "sidebar main main";
-    grid-template-columns: 250px 1fr 1fr;
-    grid-template-rows: 60px 1fr 1fr;
-    min-height: 100vh;
-    gap: 10px;
-}
-
-@media (max-width: 768px) {
-    .dashboard {
-        grid-template-areas:
-            "header"
-            "main"
-            "sidebar";
-        grid-template-columns: 1fr;
-        grid-template-rows: 60px 1fr auto;
-    }
-}
-```
-
-**Grid Alignment:**
-```css
-.grid-alignment {
-    display: grid;
-    grid-template-columns: repeat(3, 200px);
-    grid-template-rows: repeat(2, 100px);
-    
-    /* Align the entire grid within container */
-    justify-content: center;    /* horizontal alignment */
-    align-content: center;      /* vertical alignment */
-    
-    /* Align items within their grid cells */
-    justify-items: center;      /* horizontal alignment of items */
-    align-items: center;        /* vertical alignment of items */
-    
-    /* Individual item alignment */
-    .special-item {
-        justify-self: end;      /* align this item horizontally */
-        align-self: start;      /* align this item vertically */
-    }
-}
-```
 
 **Resources:**
 - **MDN CSS Grid**: [Basic concepts of grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout)
 - **Grid Garden Game**: [Grid Garden](https://cssgridgarden.com/)
-- **The Odin Project**: [CSS Grid](https://www.theodinproject.com/lessons/intermediate-html-and-css-grid)
 - **CSS Grid Complete Guide**: [CSS-Tricks Grid Guide](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 ---
@@ -943,46 +736,9 @@ p { font-size: 1rem; }       /* 16px */
 
 ---
 
-## Practice Exercises
-
-### Exercise 1: Flexbox Navigation Bar
-Create a responsive navigation bar that:
-- Stacks vertically on mobile
-- Displays horizontally on desktop
-- Includes a logo and menu items
-- Has proper spacing and alignment
-
-### Exercise 2: CSS Grid Magazine Layout
-Build a magazine-style layout featuring:
-- Header spanning full width
-- Sidebar for navigation
-- Main content area with article grid
-- Featured articles that span multiple columns
-- Footer spanning full width
-
-### Exercise 3: Responsive Card Grid
-Design a responsive card layout that:
-- Shows 1 column on mobile
-- Shows 2 columns on tablet
-- Shows 3-4 columns on desktop
-- Uses CSS Grid with auto-fit
-- Maintains aspect ratios
-
-### Exercise 4: Dashboard Layout
-Create a dashboard interface with:
-- Fixed header with navigation
-- Collapsible sidebar
-- Main content area with widget grid
-- Responsive behavior for different screen sizes
-- Proper use of CSS Grid and Flexbox
-
-### Exercise 5: Landing Page Layout
-Build a complete landing page featuring:
-- Hero section with full viewport height
-- Feature sections with flexible layouts
-- Responsive image galleries
-- Contact form with proper styling
-- Mobile-first responsive design
+### Task 2 (Project)
+1. Add a CSS Flexbox layout to your portfolio page. With CSS Flexbox you should be able to build more sophisticated navigations as well as the skills and project section of your portfolio.
+2. Try to implement some of the other features shown such as Media Queries and adapt the design to different screen sizes.
 
 ---
 
@@ -992,34 +748,12 @@ Before moving to Part 4, ensure you can:
 - [ ] Understand and apply different display values
 - [ ] Use CSS positioning effectively
 - [ ] Create layouts with Flexbox
-- [ ] Build complex layouts with CSS Grid
 - [ ] Implement responsive design with media queries
 - [ ] Use flexible units appropriately
 - [ ] Create mobile-first responsive designs
 - [ ] Combine layout methods effectively
 - [ ] Debug layout issues using developer tools
 - [ ] Optimize layouts for different devices and screen sizes
-
----
-
-## Portfolio Project Progress
-
-At this stage, your portfolio should include:
-- **Responsive layout** that works on all device sizes
-- **Modern CSS Grid or Flexbox** for complex layouts
-- **Mobile-first design** approach
-- **Proper navigation** that adapts to screen size
-- **Flexible typography** and spacing
-- **Optimized images** and media
-
-**Portfolio Layout Checklist:**
-1. Header with responsive navigation
-2. Hero section with compelling introduction
-3. About section with flexible layout
-4. Projects gallery using CSS Grid
-5. Contact form with proper styling
-6. Footer with social links and information
-7. Consistent responsive behavior across all sections
 
 ---
 
@@ -1076,9 +810,10 @@ At this stage, your portfolio should include:
 
 ## Next Steps
 
-You're now ready for **Part 4: Advanced Topics and Best Practices** where you'll learn modern CSS features, debugging techniques, and optimization strategies.
+You're now ready for [Part 4: Advanced Topics and Best Practices](4_advanced-topics-and-best-practices.md) where you'll learn modern CSS features, debugging techniques, and optimization strategies.
 
 **Coming Up in Part 4:**
+- CSS Grid
 - CSS custom properties (variables)
 - Modern CSS functions and features
 - Debugging and development tools

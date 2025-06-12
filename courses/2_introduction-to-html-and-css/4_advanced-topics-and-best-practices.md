@@ -2,9 +2,230 @@
 
 ## Modern CSS Features
 
-WIP! Tasks and tutorials will follow!
+### Task 1
+1. 
 
-### CSS Custom Properties (Variables)
+#### Grid Container and Grid Items
+
+CSS Grid is a two-dimensional layout system for creating complex layouts with rows and columns.
+
+**Creating a Grid Container:**
+```css
+.grid-container {
+    display: grid;
+    /* All direct children become grid items */
+}
+
+/* Inline grid */
+.inline-grid {
+    display: inline-grid;
+}
+```
+
+**Basic Grid Example:**
+```html
+<div class="grid-container">
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <div class="grid-item">3</div>
+    <div class="grid-item">4</div>
+    <div class="grid-item">5</div>
+    <div class="grid-item">6</div>
+</div>
+```
+
+```css
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+    grid-template-rows: 100px 100px;    /* 2 rows of 100px each */
+    gap: 10px;
+    background-color: lightgray;
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
+}
+```
+
+#### Creating Grid Templates
+
+**Grid Template Columns and Rows:**
+```css
+.grid-examples {
+    display: grid;
+    
+    /* Fixed sizes */
+    grid-template-columns: 200px 300px 100px;
+    
+    /* Flexible units */
+    grid-template-columns: 1fr 2fr 1fr; /* fractions of available space */
+    
+    /* Mixed units */
+    grid-template-columns: 200px 1fr 100px;
+    
+    /* Repeat function */
+    grid-template-columns: repeat(3, 1fr); /* repeat 1fr three times */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* responsive columns */
+    
+    /* Auto-sizing */
+    grid-template-columns: auto auto auto; /* size based on content */
+}
+```
+
+**Grid Template Areas:**
+```css
+.layout-grid {
+    display: grid;
+    grid-template-areas: 
+        "header header header"
+        "sidebar main main"
+        "footer footer footer";
+    grid-template-columns: 200px 1fr 1fr;
+    grid-template-rows: 80px 1fr 60px;
+    min-height: 100vh;
+    gap: 10px;
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }
+```
+
+**Grid Lines and Positioning:**
+```css
+.positioned-item {
+    /* Position by line numbers */
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    
+    /* Shorthand */
+    grid-column: 2 / 4;  /* start / end */
+    grid-row: 1 / 3;
+    
+    /* Span notation */
+    grid-column: 2 / span 2;  /* start at line 2, span 2 columns */
+    grid-row: span 2;         /* span 2 rows from auto-placement */
+    
+    /* Ultra shorthand */
+    grid-area: 1 / 2 / 3 / 4; /* row-start / col-start / row-end / col-end */
+}
+```
+
+#### Grid Areas and Responsive Grids
+
+**Named Grid Lines:**
+```css
+.named-lines {
+    display: grid;
+    grid-template-columns: 
+        [sidebar-start] 250px 
+        [sidebar-end main-start] 1fr 
+        [main-end];
+    grid-template-rows: 
+        [header-start] 80px 
+        [header-end content-start] 1fr 
+        [content-end];
+}
+
+.main-content {
+    grid-column: main-start / main-end;
+    grid-row: content-start / content-end;
+}
+```
+
+**Auto-placement and Dense Packing:**
+```css
+.auto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 150px;
+    gap: 15px;
+    grid-auto-flow: row;    /* default: fill rows first */
+    grid-auto-flow: column; /* fill columns first */
+    grid-auto-flow: dense;  /* pack items densely */
+}
+```
+
+**Responsive Grid Examples:**
+
+**1. Magazine Layout:**
+```css
+.magazine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 200px;
+    gap: 20px;
+}
+
+.featured-article {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+```
+
+**2. Dashboard Layout:**
+```css
+.dashboard {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "sidebar main main"
+        "sidebar main main";
+    grid-template-columns: 250px 1fr 1fr;
+    grid-template-rows: 60px 1fr 1fr;
+    min-height: 100vh;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-areas:
+            "header"
+            "main"
+            "sidebar";
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px 1fr auto;
+    }
+}
+```
+
+**Grid Alignment:**
+```css
+.grid-alignment {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(2, 100px);
+    
+    /* Align the entire grid within container */
+    justify-content: center;    /* horizontal alignment */
+    align-content: center;      /* vertical alignment */
+    
+    /* Align items within their grid cells */
+    justify-items: center;      /* horizontal alignment of items */
+    align-items: center;        /* vertical alignment of items */
+    
+    /* Individual item alignment */
+    .special-item {
+        justify-self: end;      /* align this item horizontally */
+        align-self: start;      /* align this item vertically */
+    }
+}
+```
+
+**Resources:**
+- **MDN CSS Grid**: [Basic concepts of grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout)
+- **Grid Garden Game**: [Grid Garden](https://cssgridgarden.com/)
+- **CSS Grid Complete Guide**: [CSS-Tricks Grid Guide](https://css-tricks.com/snippets/css/complete-guide-grid/)
+
+
+#### CSS Custom Properties (Variables)
 
 CSS custom properties allow you to store values in variables that can be reused throughout your stylesheet, making maintenance easier and enabling dynamic theming.
 
@@ -59,20 +280,6 @@ CSS custom properties allow you to store values in variables that can be reused 
     --card-background: #2c3e50;
     --text-color: #ecf0f1;
 }
-```
-
-**Dynamic Variables with JavaScript:**
-```css
-:root {
-    --dynamic-color: #3498db;
-    --user-preference: 16px;
-}
-```
-
-```javascript
-// Change variables dynamically
-document.documentElement.style.setProperty('--dynamic-color', '#e74c3c');
-document.documentElement.style.setProperty('--user-preference', '18px');
 ```
 
 **Practical Variable System:**
@@ -202,75 +409,6 @@ document.documentElement.style.setProperty('--user-preference', '18px');
 .heading-2 { font-size: clamp(1.5rem, 4vw, 3rem); }
 .heading-3 { font-size: clamp(1.25rem, 3vw, 2rem); }
 ```
-
-### Container Queries Introduction
-
-Container queries allow you to apply styles based on the size of a containing element rather than the viewport.
-
-**Basic Container Query:**
-```css
-.card-container {
-    container-type: inline-size;
-    /* or container: card / inline-size; for named container */
-}
-
-/* Apply styles based on container width */
-@container (min-width: 300px) {
-    .card {
-        display: flex;
-        flex-direction: row;
-    }
-    
-    .card-image {
-        width: 150px;
-    }
-}
-
-@container (min-width: 500px) {
-    .card {
-        padding: 2rem;
-    }
-    
-    .card-title {
-        font-size: 1.5rem;
-    }
-}
-```
-
-**Named Containers:**
-```css
-.sidebar {
-    container-name: sidebar;
-    container-type: inline-size;
-}
-
-.main-content {
-    container-name: main;
-    container-type: inline-size;
-}
-
-/* Query specific containers */
-@container sidebar (min-width: 250px) {
-    .nav-link {
-        padding: 1rem;
-        font-size: 1.1rem;
-    }
-}
-
-@container main (min-width: 600px) {
-    .article {
-        columns: 2;
-        column-gap: 2rem;
-    }
-}
-```
-
-**Note:** Container queries are a newer feature and may require browser support checks. Always provide fallbacks for older browsers.
-
-**Resources:**
-- **MDN CSS Custom Properties**: [Using CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
-- **MDN CSS Functions**: [CSS functional notation](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions)
-- **Container Queries**: [CSS Container Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries)
 
 ---
 
@@ -492,17 +630,10 @@ console.log(styles.getPropertyValue('--primary-color'));
 }
 ```
 
-**CSS Linting Tools:**
-- **Stylelint**: Automated CSS linting
-- **Prettier**: Code formatting
-- **VS Code Extensions**: Real-time error checking
-
 **Browser Compatibility:**
 - [Can I Use](https://caniuse.com/): Check feature support
-- **Autoprefixer**: Automatic vendor prefixes
-- **Polyfills**: Fill gaps for older browsers
 
 **Resources:**
 - **Chrome DevTools Documentation**: [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools)
 - **Firefox Developer Tools**: [Firefox DevTools](https://developer.mozilla.org/en-US/docs/Tools)
-- **CSS Debugging Guide**: [Debugging CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Debugging_CSS
+- **CSS Debugging Guide**: [Debugging CSS](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Debugging_CSS)
