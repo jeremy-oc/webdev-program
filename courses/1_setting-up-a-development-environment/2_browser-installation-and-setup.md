@@ -107,4 +107,4 @@ Responsively includes common devices:
 
 This comprehensive browser setup provides you with all the tools necessary for cross-browser testing and responsive design development. Each browser offers unique advantages, and using them together ensures your websites work perfectly for all users.
 
-[Part 3: Version Control with Git](3_version-control-with-git)
+[Part 3: Version Control with Git](3_version-control-with-git.md)

@@ -23,9 +23,9 @@ By the end of this module, you will be able to:
 
 ## Table of Content:
 
-### [Project Work: Personal Portfolio](project_personal-portfolio)
+### [Project Work: Personal Portfolio](project_personal-portfolio.md)
 
-### [Part 1: HTML Fundamentals]()
+### [Part 1: HTML Fundamentals](1_html-fundamentals.md)
 
 #### Introduction to HTML
 - What is HTML and how it works
@@ -62,7 +62,7 @@ By the end of this module, you will be able to:
 - Page structure with header, nav, main, aside, and footer
 - SEO and accessibility benefits
 
-### [Part 2: CSS Fundamentals]()
+### [Part 2: CSS Fundamentals](2_css-fundamentals.md)
 
 #### Introduction to CSS
 - What is CSS and how it works with HTML
@@ -90,7 +90,7 @@ By the end of this module, you will be able to:
 - Background properties and images
 - Gradients and transparency
 
-### [Part 3: CSS Layout and Positioning]()
+### [Part 3: CSS Layout and Positioning](3_css-layout-and-positioning.md)
 
 #### CSS Layout Basics
 - Display property (block, inline, inline-block)
@@ -112,7 +112,7 @@ By the end of this module, you will be able to:
 - Media queries and breakpoints
 - Flexible units (em, rem, %, vw, vh)
 
-### [Part 4: Advanced Topics and Best Practices]()
+### [Part 4: Advanced Topics and Best Practices](4_advanced-topics-and-best-practices.md)
 
 #### Modern CSS Features
 - CSS custom properties (variables)
@@ -129,7 +129,7 @@ By the end of this module, you will be able to:
 - Performance considerations
 - Final project: Building a complete responsive website
 
-### [Additional Resources]()
+<!-- ### [Additional Resources]()
 - Useful tools, references, and further reading
 - Cheat Sheets and quick references for HTML elements and CSS properties
-- Troubleshooting Guides for common problems and solutions
+- Troubleshooting Guides for common problems and solutions -->

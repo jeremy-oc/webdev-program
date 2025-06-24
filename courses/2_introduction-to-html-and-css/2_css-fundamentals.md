@@ -648,7 +648,7 @@ p {
 
 ---
 ### Task 2 (Project)
-1. Go through the individual section HTML files you created in [Part 1: HTML Fundamentals](1_html-fundamentals) and apply CSS styling as best as you can (you can already try to create multi-column layouts, but it will become much easier in the next section with CSS flexbox).
+1. Go through the individual section HTML files you created in [Part 1: HTML Fundamentals](1_html-fundamentals.md) and apply CSS styling as best as you can (you can already try to create multi-column layouts, but it will become much easier in the next section with CSS flexbox).
 2. Create individual stylesheets as `.css` files and link them to the `.html` files they belong to.
 ---
 
@@ -669,4 +669,4 @@ Before moving to Part 3, ensure you can:
 
 ## Next Steps
 
-You're now ready for [Part 3: CSS Layout and Positioning](3_css-layout-and-positioning) where you'll learn advanced layout techniques including flexbox, grid, and responsive design principles.
+You're now ready for [Part 3: CSS Layout and Positioning](3_css-layout-and-positioning.md) where you'll learn advanced layout techniques including flexbox, grid, and responsive design principles.

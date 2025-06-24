@@ -479,7 +479,7 @@ Semantic HTML uses elements that have meaning and describe the content structure
 ---
 
 ### Task 2 (Project)
-1. Create HTML files with base structure for the individual sections of the portfolio as described [here](project_personal-portfolio)
+1. Create HTML files with base structure for the individual sections of the portfolio as described [here](project_personal-portfolio.md)
 2. Create a basic HTML structure with all the elements that are part of the individual sections in their respective HTML file (as best as you currently can).
 3. Apply what you learned about semantic HTML and accessibility (`alt` attributes for images, `label` elements in forms).
 ---
@@ -498,4 +498,4 @@ Before moving to Part 2, ensure you can:
 
 ## Next Steps
 
-Once you've mastered HTML fundamentals, you'll move on to [Part 2: CSS Fundamentals](2_css-fundamentals) where you'll learn to style your HTML content and create visually appealing web pages.
+Once you've mastered HTML fundamentals, you'll move on to [Part 2: CSS Fundamentals](2_css-fundamentals.md) where you'll learn to style your HTML content and create visually appealing web pages.

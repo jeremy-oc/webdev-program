@@ -512,4 +512,4 @@ Changes to be committed:
 
 This foundation in Git basics prepares you for the next step: connecting your local Git repository to GitHub for backup, sharing, and collaboration.
 
-[Part 4: Version Control with Git](4_github-integration)
+[Part 4: Version Control with Git](4_github-integration.md)

@@ -37,7 +37,7 @@ By the end of this module, you will be able to:
 - Git integration
 - VS Code Extensions
 
-### [Part 2: Browser Installation and Setup](2_browser-installation-and-setup)
+### [Part 2: Browser Installation and Setup](2_browser-installation-and-setup.md)
 
 #### Why Multiple Browsers Matter
 - Understanding browser differences and compatibility
@@ -68,7 +68,7 @@ By the end of this module, you will be able to:
 - Network tab for performance analysis
 - Mobile device simulation and responsive testing
 
-### [Part 3: Version Control with Git](3_version-control-with-git)
+### [Part 3: Version Control with Git](3_version-control-with-git.md)
 
 #### Introduction to Version Control
 - What is version control and why it's essential
@@ -86,7 +86,7 @@ By the end of this module, you will be able to:
 - Understanding the Git workflow
 - Basic Git commands (add, commit, status, log)
 
-### [Part 4: GitHub Integration](4_github-integration)
+### [Part 4: GitHub Integration](4_github-integration.md)
 
 #### Introduction to GitHub
 - What is GitHub and how it differs from Git

@@ -96,4 +96,4 @@ Your journey to becoming a web developer starts now! In Week 1, you'll set up yo
 
 ---
 
-**Next Step**: [Week 1: Development Environment Setup & HTML/CSS Foundations](./week-1.md)
+**Next Step**: [Week 1: Development Environment Setup & HTML/CSS Foundations](0_introduction.md)
