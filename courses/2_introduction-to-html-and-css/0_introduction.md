@@ -2,7 +2,7 @@
 
 This module provides a comprehensive introduction to the foundational technologies of web development: HTML (HyperText Markup Language) and CSS (Cascading Style Sheets). You'll learn how HTML structures web content and how CSS styles and layouts that content to create visually appealing and responsive websites.
 
-## What Is Covered by this Module:
+## What Is Covered by this Module
 
 - HTML fundamentals including elements, tags, and document structure
 - Semantic HTML for basic accessibility and SEO
@@ -12,6 +12,7 @@ This module provides a comprehensive introduction to the foundational technologi
 - Best practices for clean, maintainable code
 
 ## Learning Objectives
+
 By the end of this module, you will be able to:
 
 - Create well-structured HTML documents using proper semantic elements and markup
@@ -21,11 +22,13 @@ By the end of this module, you will be able to:
 - Debug and troubleshoot common HTML and CSS issues
 - Create a complete website project demonstrating proficiency in both technologies
 
-## Table of Content:
+## Table of Contents
 
-### [Project Work: Personal Portfolio](project_personal-portfolio.md)
+### Project Work: Personal Portfolio
+*Reference: [project_personal-portfolio.md](project_personal-portfolio.md)*
 
-### [Part 1: HTML Fundamentals](1_html-fundamentals.md)
+### Part 1: HTML Fundamentals
+*Reference: [1_html-fundamentals.md](1_html-fundamentals.md)*
 
 #### Introduction to HTML
 - What is HTML and how it works
@@ -62,7 +65,8 @@ By the end of this module, you will be able to:
 - Page structure with header, nav, main, aside, and footer
 - SEO and accessibility benefits
 
-### [Part 2: CSS Fundamentals](2_css-fundamentals.md)
+### Part 2: CSS Fundamentals
+*Reference: [2_css-fundamentals.md](2_css-fundamentals.md)*
 
 #### Introduction to CSS
 - What is CSS and how it works with HTML
@@ -90,7 +94,8 @@ By the end of this module, you will be able to:
 - Background properties and images
 - Gradients and transparency
 
-### [Part 3: CSS Layout and Positioning](3_css-layout-and-positioning.md)
+### Part 3: CSS Layout and Positioning
+*Reference: [3_css-layout-and-positioning.md](3_css-layout-and-positioning.md)*
 
 #### CSS Layout Basics
 - Display property (block, inline, inline-block)
@@ -112,7 +117,8 @@ By the end of this module, you will be able to:
 - Media queries and breakpoints
 - Flexible units (em, rem, %, vw, vh)
 
-### [Part 4: Advanced Topics and Best Practices](4_advanced-topics-and-best-practices.md)
+### Part 4: Advanced Topics and Best Practices
+*Reference: [4_advanced-topics-and-best-practices.md](4_advanced-topics-and-best-practices.md)*
 
 #### Modern CSS Features
 - CSS custom properties (variables)
@@ -129,7 +135,10 @@ By the end of this module, you will be able to:
 - Performance considerations
 - Final project: Building a complete responsive website
 
-<!-- ### [Additional Resources]()
+<!-- ---
+
+## Additional Resources
+
 - Useful tools, references, and further reading
-- Cheat Sheets and quick references for HTML elements and CSS properties
-- Troubleshooting Guides for common problems and solutions -->
+- Cheat sheets and quick references for HTML elements and CSS properties
+- Troubleshooting guides for common problems and solutions -->

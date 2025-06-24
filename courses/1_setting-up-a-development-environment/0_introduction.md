@@ -2,7 +2,8 @@
 
 This module provides a comprehensive guide to setting up a professional web development environment. You'll learn how to install and configure essential tools, browsers, and version control systems that form the foundation of modern web development workflows.
 
-## What Is Covered by this Module:
+## What Is Covered by this Module
+
 - Installing and configuring Visual Studio Code with essential extensions
 - Setting up multiple browsers for testing and development
 - Introduction to version control with Git and GitHub
@@ -11,6 +12,7 @@ This module provides a comprehensive guide to setting up a professional web deve
 - Best practices for maintaining a clean and organized development environment
 
 ## Learning Objectives
+
 By the end of this module, you will be able to:
 
 - Install and configure VS Code with appropriate extensions for web development
@@ -21,9 +23,10 @@ By the end of this module, you will be able to:
 - Use browser developer tools effectively for debugging and testing
 - Implement a professional workflow for web development projects
 
-## Table of Content:
+## Table of Contents
 
-### [Part 1: Code Editor Setup](1_code-editor-setup.md)
+### Part 1: Code Editor Setup
+*Reference: [1_code-editor-setup.md](1_code-editor-setup.md)*
 
 #### Installing Visual Studio Code
 - Downloading and installing VS Code across different operating systems
@@ -37,7 +40,8 @@ By the end of this module, you will be able to:
 - Git integration
 - VS Code Extensions
 
-### [Part 2: Browser Installation and Setup](2_browser-installation-and-setup.md)
+### Part 2: Browser Installation and Setup
+*Reference: [2_browser-installation-and-setup.md](2_browser-installation-and-setup.md)*
 
 #### Why Multiple Browsers Matter
 - Understanding browser differences and compatibility
@@ -68,7 +72,8 @@ By the end of this module, you will be able to:
 - Network tab for performance analysis
 - Mobile device simulation and responsive testing
 
-### [Part 3: Version Control with Git](3_version-control-with-git.md)
+### Part 3: Version Control with Git
+*Reference: [3_version-control-with-git.md](3_version-control-with-git.md)*
 
 #### Introduction to Version Control
 - What is version control and why it's essential
@@ -86,7 +91,8 @@ By the end of this module, you will be able to:
 - Understanding the Git workflow
 - Basic Git commands (add, commit, status, log)
 
-### [Part 4: GitHub Integration](4_github-integration.md)
+### Part 4: GitHub Integration
+*Reference: [4_github-integration.md](4_github-integration.md)*
 
 #### Introduction to GitHub
 - What is GitHub and how it differs from Git
@@ -99,8 +105,10 @@ By the end of this module, you will be able to:
 - Pushing local repositories to GitHub
 - Cloning repositories from GitHub
 
-<!-- 
-### [Additional Resources]()
+<!-- ---
+
+## Additional Resources
+
 - Comprehensive tool installation guides for different operating systems
 - Cheat sheets for Git commands and VS Code shortcuts
 - Troubleshooting guides for common setup issues -->
