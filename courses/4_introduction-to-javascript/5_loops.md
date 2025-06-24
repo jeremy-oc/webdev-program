@@ -266,36 +266,31 @@ console.log(createStarPattern(5));
 
 ---
 
-## Mini Project: Countdown Timer
+## Mini Project: Interactive Number Pattern Generator
 
-Build an interactive countdown timer with multiple features and visual feedback.
+Build a web application that generates various number patterns using different types of loops. This project will help you practice all loop types and understand when to use each one.
 
 ### Project Requirements:
 
-1. **Basic Timer Functionality:**
-   - Set custom countdown time (minutes and seconds)
-   - Start, pause, and reset controls
-   - Real-time display updates
-   - Sound notification when timer reaches zero
+1. **Pattern Generation:**
+   - Multiplication tables (for loops)
+   - Prime number sequences (nested loops with break)
+   - Fibonacci sequence (while loops)
+   - Number pyramids (nested loops)
 
-2. **Visual Features:**
-   - Progress bar showing remaining time
-   - Color changes as time runs out
-   - Smooth animations and transitions
-   - Full-screen mode option
+2. **Interactive Features:**
+   - User input for pattern size/range
+   - Real-time pattern updates
+   - Multiple pattern display modes
+   - Pattern explanations
 
-3. **Preset Timers:**
-   - Quick buttons for common times (5min, 10min, 25min)
-   - Pomodoro technique support
-   - Custom preset creation and saving
+3. **Loop Practice:**
+   - Use different loop types appropriately
+   - Implement break and continue statements
+   - Handle edge cases and validation
+   - Optimize for performance
 
-4. **Advanced Features:**
-   - Multiple simultaneous timers
-   - Lap/split time recording
-   - Timer history and statistics
-   - Keyboard shortcuts
-
-### Starter Code Structure:
+### Minimal Starter Code:
 
 ```html
 <!DOCTYPE html>
@@ -303,557 +298,302 @@ Build an interactive countdown timer with multiple features and visual feedback.
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Countdown Timer</title>
+    <title>Number Pattern Generator</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
         }
         
-        .timer-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-        }
-        
-        .timer-display {
-            font-size: 4rem;
-            font-weight: bold;
-            margin: 30px 0;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            transition: color 0.3s ease;
-        }
-        
-        .timer-display.warning {
-            color: #ffeb3b;
-        }
-        
-        .timer-display.danger {
-            color: #f44336;
-            animation: pulse 1s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0.7; }
-        }
-        
-        .progress-container {
-            width: 100%;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.2);
+        .container {
+            background: white;
+            padding: 30px;
             border-radius: 10px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #4caf50, #8bc34a);
-            border-radius: 10px;
-            transition: width 0.1s linear, background 0.3s ease;
-        }
-        
-        .progress-bar.warning {
-            background: linear-gradient(90deg, #ff9800, #ffeb3b);
-        }
-        
-        .progress-bar.danger {
-            background: linear-gradient(90deg, #f44336, #ff5722);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .controls {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin: 25px 0;
-            flex-wrap: wrap;
-        }
-        
-        button {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            backdrop-filter: blur(10px);
-        }
-        
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(45deg, #4caf50, #45a049);
-        }
-        
-        .btn-secondary {
-            background: linear-gradient(45deg, #ff9800, #f57c00);
-        }
-        
-        .btn-danger {
-            background: linear-gradient(45deg, #f44336, #d32f2f);
-        }
-        
-        .input-section {
-            margin: 20px 0;
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        input {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 15px;
-            font-size: 16px;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-            width: 80px;
-        }
-        
-        .presets {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .preset-btn {
-            padding: 8px 16px;
-            font-size: 14px;
-            background: rgba(255, 255, 255, 0.15);
-        }
-        
-        .status {
-            margin: 15px 0;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        
-        .fullscreen-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        
-        .timer-history {
-            margin-top: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            margin-bottom: 20px;
             padding: 15px;
-            max-height: 200px;
-            overflow-y: auto;
+            background: #f8f9fa;
+            border-radius: 8px;
         }
         
-        .history-item {
-            padding: 5px 0;
-            font-size: 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .controls label {
+            display: inline-block;
+            width: 120px;
+            font-weight: bold;
         }
         
-        .hidden {
-            display: none;
+        .controls input, .controls select {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
         
-        /* Fullscreen styles */
-        .fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1000;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .controls button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .controls button:hover {
+            background: #0056b3;
+        }
+        
+        .output {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+            min-height: 200px;
+        }
+        
+        .tabs {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            margin-bottom: 20px;
         }
         
-        .fullscreen .timer-display {
-            font-size: 8rem;
+        .tab {
+            background: #e9ecef;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px 4px 0 0;
+            margin-right: 2px;
+        }
+        
+        .tab.active {
+            background: #007bff;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Toggle Fullscreen">⛶</button>
-    
-    <div class="timer-container" id="timerContainer">
-        <h1>🕒 Advanced Timer</h1>
+    <div class="container">
+        <h1>🔢 Number Pattern Generator</h1>
+        <p>Practice loops by generating different number patterns!</p>
         
-        <div class="status" id="timerStatus">Ready to start</div>
-        
-        <div class="timer-display" id="timerDisplay">00:00</div>
-        
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('multiplication')">Multiplication</button>
+            <button class="tab" onclick="switchTab('fibonacci')">Fibonacci</button>
+            <button class="tab" onclick="switchTab('primes')">Prime Numbers</button>
+            <button class="tab" onclick="switchTab('patterns')">Visual Patterns</button>
         </div>
         
-        <div class="input-section">
-            <label>Minutes:</label>
-            <input type="number" id="minutesInput" value="5" min="0" max="59">
-            <label>Seconds:</label>
-            <input type="number" id="secondsInput" value="0" min="0" max="59">
+        <!-- Multiplication Table Tab -->
+        <div id="multiplication" class="tab-content">
+            <div class="controls">
+                <label>Table for:</label>
+                <input type="number" id="multNumber" value="7" min="1" max="20">
+                <label>Up to:</label>
+                <input type="number" id="multRange" value="12" min="1" max="20">
+                <button onclick="generateMultiplication()">Generate</button>
+            </div>
         </div>
         
-        <div class="presets">
-            <button class="preset-btn" onclick="setPreset(5, 0)">5 min</button>
-            <button class="preset-btn" onclick="setPreset(10, 0)">10 min</button>
-            <button class="preset-btn" onclick="setPreset(25, 0)">25 min (Pomodoro)</button>
-            <button class="preset-btn" onclick="setPreset(0, 30)">30 sec</button>
+        <!-- Fibonacci Tab -->
+        <div id="fibonacci" class="tab-content hidden">
+            <div class="controls">
+                <label>Count:</label>
+                <input type="number" id="fibCount" value="10" min="1" max="30">
+                <button onclick="generateFibonacci()">Generate</button>
+            </div>
         </div>
         
-        <div class="controls">
-            <button class="btn-primary" id="startBtn" onclick="startTimer()">Start</button>
-            <button class="btn-secondary" id="pauseBtn" onclick="pauseTimer()" disabled>Pause</button>
-            <button class="btn-danger" onclick="resetTimer()">Reset</button>
+        <!-- Prime Numbers Tab -->
+        <div id="primes" class="tab-content hidden">
+            <div class="controls">
+                <label>Up to:</label>
+                <input type="number" id="primeMax" value="50" min="2" max="200">
+                <button onclick="generatePrimes()">Generate</button>
+            </div>
         </div>
         
-        <div class="timer-history" id="timerHistory">
-            <strong>Timer History:</strong>
-            <div id="historyList"></div>
+        <!-- Visual Patterns Tab -->
+        <div id="patterns" class="tab-content hidden">
+            <div class="controls">
+                <label>Pattern:</label>
+                <select id="patternType">
+                    <option value="triangle">Number Triangle</option>
+                    <option value="pyramid">Star Pyramid</option>
+                    <option value="diamond">Diamond</option>
+                </select>
+                <label>Size:</label>
+                <input type="number" id="patternSize" value="5" min="3" max="10">
+                <button onclick="generatePattern()">Generate</button>
+            </div>
         </div>
+        
+        <div class="output" id="output">Click a Generate button to see patterns!</div>
     </div>
 
     <script>
-        // Timer state variables
-        let timerInterval = null;
-        let totalSeconds = 0;
-        let remainingSeconds = 0;
-        let isRunning = false;
-        let isPaused = false;
-        let startTime = null;
-        let history = [];
-        
-        // Audio for notifications
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        
-        // Core timer functions
-        function setTimer(minutes, seconds) {
-            const total = (minutes * 60) + seconds;
-            if (total <= 0) {
-                alert("Please enter a valid time greater than 0");
-                return false;
-            }
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
             
-            totalSeconds = total;
-            remainingSeconds = total;
-            updateDisplay();
-            updateProgressBar();
-            return true;
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab and mark as active
+            document.getElementById(tabName).classList.remove('hidden');
+            event.target.classList.add('active');
+            
+            // Clear output
+            document.getElementById('output').textContent = 'Click Generate to see the pattern!';
         }
         
-        function startTimer() {
-            if (!isRunning && !isPaused) {
-                const minutes = parseInt(document.getElementById('minutesInput').value) || 0;
-                const seconds = parseInt(document.getElementById('secondsInput').value) || 0;
-                
-                if (!setTimer(minutes, seconds)) {
-                    return;
-                }
-            }
-            
-            isRunning = true;
-            isPaused = false;
-            startTime = Date.now() - (totalSeconds - remainingSeconds) * 1000;
-            
-            // Start the countdown loop
-            timerInterval = setInterval(updateTimer, 100);
-            
-            updateUI();
-            updateStatus("Timer running...");
+        // TODO: Implement these functions using different loop types
+        
+        function generateMultiplication() {
+            // TODO: Use a for loop to generate multiplication table
+            // Get values from multNumber and multRange inputs
+            // Display results in output div
         }
         
-        function updateTimer() {
-            if (remainingSeconds <= 0) {
-                completeTimer();
-                return;
-            }
-            
-            remainingSeconds--;
-            updateDisplay();
-            updateProgressBar();
-            
-            // Visual warnings
-            if (remainingSeconds <= 10) {
-                setTimerState('danger');
-            } else if (remainingSeconds <= 30) {
-                setTimerState('warning');
-            } else {
-                setTimerState('normal');
-            }
+        function generateFibonacci() {
+            // TODO: Use a while loop to generate Fibonacci sequence
+            // Get count from fibCount input
+            // Display results in output div
         }
         
-        function pauseTimer() {
-            if (isRunning) {
-                clearInterval(timerInterval);
-                isRunning = false;
-                isPaused = true;
-                updateUI();
-                updateStatus("Timer paused");
-            }
+        function generatePrimes() {
+            // TODO: Use nested loops with break to find prime numbers
+            // Get max value from primeMax input
+            // Display results in output div
         }
         
-        function resetTimer() {
-            clearInterval(timerInterval);
-            isRunning = false;
-            isPaused = false;
-            
-            const minutes = parseInt(document.getElementById('minutesInput').value) || 0;
-            const seconds = parseInt(document.getElementById('secondsInput').value) || 0;
-            setTimer(minutes, seconds);
-            
-            setTimerState('normal');
-            updateUI();
-            updateStatus("Timer reset");
+        function generatePattern() {
+            // TODO: Use nested loops to create visual patterns
+            // Get pattern type and size from inputs
+            // Use continue statements where appropriate
+            // Display results in output div
         }
         
-        function completeTimer() {
-            clearInterval(timerInterval);
-            isRunning = false;
-            isPaused = false;
-            remainingSeconds = 0;
-            
-            updateDisplay();
-            updateProgressBar();
-            setTimerState('danger');
-            updateUI();
-            updateStatus("Time's up! 🎉");
-            
-            // Add to history
-            addToHistory(`${formatTime(totalSeconds)} - Completed`);
-            
-            // Play notification sound
-            playNotificationSound();
-            
-            // Browser notification if supported
-            if (Notification.permission === 'granted') {
-                new Notification('Timer Complete!', {
-                    body: 'Your countdown timer has finished.',
-                    icon: '🕒'
-                });
-            }
-        }
-        
-        // Display and UI functions
-        function updateDisplay() {
-            document.getElementById('timerDisplay').textContent = formatTime(remainingSeconds);
-        }
-        
-        function formatTime(seconds) {
-            const mins = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }
-        
-        function updateProgressBar() {
-            const progress = totalSeconds > 0 ? (remainingSeconds / totalSeconds) * 100 : 0;
-            const progressBar = document.getElementById('progressBar');
-            progressBar.style.width = `${progress}%`;
-        }
-        
-        function setTimerState(state) {
-            const display = document.getElementById('timerDisplay');
-            const progressBar = document.getElementById('progressBar');
-            
-            // Remove all state classes
-            display.classList.remove('warning', 'danger');
-            progressBar.classList.remove('warning', 'danger');
-            
-            // Add appropriate state class
-            if (state !== 'normal') {
-                display.classList.add(state);
-                progressBar.classList.add(state);
-            }
-        }
-        
-        function updateUI() {
-            const startBtn = document.getElementById('startBtn');
-            const pauseBtn = document.getElementById('pauseBtn');
-            
-            if (isRunning) {
-                startBtn.disabled = true;
-                pauseBtn.disabled = false;
-                startBtn.textContent = 'Running';
-                pauseBtn.textContent = 'Pause';
-            } else if (isPaused) {
-                startBtn.disabled = false;
-                pauseBtn.disabled = true;
-                startBtn.textContent = 'Resume';
-                pauseBtn.textContent = 'Paused';
-            } else {
-                startBtn.disabled = false;
-                pauseBtn.disabled = true;
-                startBtn.textContent = 'Start';
-                pauseBtn.textContent = 'Pause';
-            }
-        }
-        
-        function updateStatus(message) {
-            document.getElementById('timerStatus').textContent = message;
-        }
-        
-        // Preset and input functions
-        function setPreset(minutes, seconds) {
-            document.getElementById('minutesInput').value = minutes;
-            document.getElementById('secondsInput').value = seconds;
-            
-            if (!isRunning && !isPaused) {
-                setTimer(minutes, seconds);
-                updateStatus(`Preset: ${formatTime(totalSeconds)}`);
-            }
-        }
-        
-        // History functions
-        function addToHistory(entry) {
-            const timestamp = new Date().toLocaleTimeString();
-            history.unshift(`${timestamp} - ${entry}`);
-            
-            // Keep only last 10 entries
-            if (history.length > 10) {
-                history = history.slice(0, 10);
-            }
-            
-            updateHistoryDisplay();
-        }
-        
-        function updateHistoryDisplay() {
-            const historyList = document.getElementById('historyList');
-            historyList.innerHTML = history.map(entry => 
-                `<div class="history-item">${entry}</div>`
-            ).join('');
-        }
-        
-        // Fullscreen functionality
-        function toggleFullscreen() {
-            const container = document.getElementById('timerContainer');
-            container.classList.toggle('fullscreen');
-        }
-        
-        // Sound functions
-        function playNotificationSound() {
-            // Create a simple beep sound
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
-            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-            
-            oscillator.start(audioContext.currentTime);
-            oscillator.stop(audioContext.currentTime + 0.5);
-        }
-        
-        // Keyboard shortcuts
-        document.addEventListener('keydown', function(event) {
-            if (event.target.tagName === 'INPUT') return;
-            
-            switch (event.key.toLowerCase()) {
-                case ' ':
-                case 'enter':
-                    event.preventDefault();
-                    if (isRunning) {
-                        pauseTimer();
-                    } else {
-                        startTimer();
-                    }
-                    break;
-                case 'r':
-                    resetTimer();
-                    break;
-                case 'f':
-                    toggleFullscreen();
-                    break;
-                case '1':
-                    setPreset(5, 0);
-                    break;
-                case '2':
-                    setPreset(10, 0);
-                    break;
-                case '3':
-                    setPreset(25, 0);
-                    break;
-            }
-        });
-        
-        // Request notification permission
-        if ('Notification' in window && Notification.permission === 'default') {
-            Notification.requestPermission();
-        }
-        
-        // Initialize timer
-        setTimer(5, 0);
-        updateUI();
+        // Add CSS for hidden class
+        const style = document.createElement('style');
+        style.textContent = '.hidden { display: none; }';
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
 ```
 
-### Helpful Concepts to Explore:
+### Your Tasks:
 
-**JavaScript Concepts:**
-- `setInterval()` and `clearInterval()` for timed execution
-- Date and time manipulation for accurate timing
-- Event handling for user interactions
-- State management for timer controls
-- Local storage for saving presets and history
-- Browser APIs for notifications and audio
+1. **Complete the `generateMultiplication()` function:**
+   - Use a **for loop** to create a multiplication table
+   - Format the output nicely (e.g., "7 x 1 = 7")
 
-**HTML Concepts:**
-- Semantic structure for timer interface
-- Form inputs with validation
-- Accessibility considerations for timers
-- Responsive design for different devices
+2. **Complete the `generateFibonacci()` function:**
+   - Use a **while loop** to generate the Fibonacci sequence
+   - Start with 0, 1 and calculate subsequent numbers
 
-**CSS Concepts:**
-- CSS animations and transitions
-- Flexbox for responsive layouts
-- CSS variables for dynamic theming
-- Media queries for fullscreen mode
+3. **Complete the `generatePrimes()` function:**
+   - Use **nested loops** to find prime numbers
+   - Use **break** statements to optimize prime checking
+   - Display each prime number found
 
-### Extension Ideas:
+4. **Complete the `generatePattern()` function:**
+   - Implement different visual patterns using **nested loops**
+   - Use **continue** statements where appropriate
+   - Handle the three pattern types: triangle, pyramid, diamond
 
-Once you complete the basic timer, try adding:
-- **Interval training**: Alternating work/rest periods
-- **Multiple timers**: Run several timers simultaneously
-- **Custom sounds**: Upload and use custom notification sounds
-- **Theme customization**: Different color schemes and backgrounds
-- **Timer templates**: Save and load timer configurations
-- **Statistics tracking**: Track usage patterns and productivity
-- **Integration**: Connect with calendar or task management apps
+### Learning Objectives:
+- Practice all three loop types (for, while, do-while)
+- Understand when to use break and continue
+- Work with nested loops effectively
+- Handle user input and validation
+- Create interactive web applications
+
+### Hints:
+- Use `document.getElementById('output').textContent = result;` to display output
+- Format multi-line output with `\n` for line breaks
+- Test with small values first, then increase complexity
+- Remember to validate user input (positive numbers, reasonable ranges)
+
+---
+
+## Advanced Loop Concepts
+
+### Loop Performance and Optimization
+
+```javascript
+// Efficient loop practices
+function optimizedArrayProcessing(largeArray) {
+    const length = largeArray.length; // Cache length
+    const results = [];
+    
+    for (let i = 0; i < length; i++) {
+        results[i] = largeArray[i] * 2;
+    }
+    
+    return results;
+}
+```
+
+### Common Loop Mistakes and Solutions
+
+#### 1. Off-by-One Errors
+```javascript
+// Wrong - misses last element
+for (let i = 0; i < array.length - 1; i++) {
+    console.log(array[i]);
+}
+
+// Correct
+for (let i = 0; i < array.length; i++) {
+    console.log(array[i]);
+}
+```
+
+#### 2. Infinite Loop Prevention
+```javascript
+function safeWhileLoop(data) {
+    let index = 0;
+    const maxIterations = 1000; // Safety limit
+    let iterations = 0;
+    
+    while (index < data.length && iterations < maxIterations) {
+        // Process data[index]
+        index++;
+        iterations++;
+    }
+}
+```
+
+---
+
+## Assessment Checklist
+
+Before moving to Part 6, ensure you can:
+- [ ] Write and understand for, while, and do-while loops
+- [ ] Use break and continue statements appropriately
+- [ ] Create nested loops for complex iterations
+- [ ] Avoid common loop pitfalls and infinite loops
+- [ ] Complete the number pattern generator project
+- [ ] Handle user input validation in loops
+- [ ] Debug loop-related issues effectively
+
+---
+
+## Next Steps
+
+Once you've completed the number pattern generator project and mastered all loop types, you're ready to move on to [Part 6: Arrays and Array Methods](6_arrays.md) where you'll learn to work with collections of data and powerful array manipulation techniques.

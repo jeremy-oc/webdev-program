@@ -202,198 +202,54 @@ Tax: $${(shoppingCart.total * 0.08).toFixed(2)}
 
 ---
 
-## Mini Project: Personal Information Card
+## Mini Project: Age Calculator
 
-Build a comprehensive personal information card that collects user data and displays it in a beautifully formatted layout with dynamic styling.
+Build a simple age calculator that tells users interesting facts about their age.
 
-### Project Requirements:
+### Project Goal:
+Create an app that calculates how many days, hours, and minutes someone has been alive.
 
-1. **Data Collection:**
-   - Full name (first and last)
-   - Age
-   - City/Location
-   - Favorite color
-   - Occupation or hobby
-
-2. **Dynamic Display:**
-   - Create a card layout showing all information
-   - Style the card based on the user's age group:
-     - Under 18: Bright, playful colors
-     - 18-65: Professional, clean design
-     - Over 65: Classic, elegant styling
-   - Use the user's favorite color as an accent
-
-3. **Information Processing:**
-   - Calculate and display birth year
-   - Create a personalized greeting message
-   - Generate a unique user ID from their information
-
-4. **Advanced Features:**
-   - Validate age input (must be positive number)
-   - Capitalize names properly
-   - Show different messages for different age groups
-
-### Starter Code Structure:
-
+### Starter Code:
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Information Card</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        .info-card {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        
-        .young { background: linear-gradient(45deg, #ff6b6b, #4ecdc4); }
-        .adult { background: linear-gradient(45deg, #667eea, #764ba2); }
-        .senior { background: linear-gradient(45deg, #d4af37, #8b7355); }
-        
-        button {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        button:hover {
-            background: #764ba2;
-        }
-    </style>
+    <title>Age Calculator</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Personal Information Card Generator</h1>
-        <p>Create your personalized information card!</p>
-        
-        <button onclick="createCard()">Create My Card</button>
-        
-        <div id="infoCard" class="info-card">
-            <!-- Card content will be generated here -->
-        </div>
-    </div>
+    <h1>Age Calculator</h1>
+    <button onclick="calculateAge()">Calculate My Age</button>
 
     <script>
-        function createCard() {
-            // Your JavaScript code here!
-        }
-        
-        function getAgeGroup(age) {
-            // Helper function to determine age group
-        }
-        
-        function formatName(name) {
-            // Helper function to capitalize names
+        function calculateAge() {
+            // Your code here
         }
     </script>
 </body>
 </html>
 ```
 
-### Helpful Concepts to Explore:
+### Your Task:
+1. Ask the user for their name and age using `prompt()`
+2. Calculate their birth year
+3. Calculate how many days they've been alive (roughly)
+4. Display all results using `alert()` with template literals
+5. Log the calculations to the console
 
-**JavaScript Concepts:**
-- Variable assignment with `let` and `const`
-- String methods (`.toUpperCase()`, `.toLowerCase()`, `.slice()`)
-- Template literals for complex strings
-- Number conversion and validation
-- Conditional logic for age groups
-- DOM manipulation (`.innerHTML`, `.style`)
-
-**HTML Concepts:**
-- Form structure and input types
-- Div containers and semantic elements
-- ID and class attributes for styling
-- Button interactions
-
-**CSS Concepts:**
-- CSS classes and dynamic class assignment
-- Flexbox or grid for card layout
-- Gradient backgrounds and transitions
-- Responsive design principles
-- Box shadows and border radius
-
-### Sample Implementation Features:
-
-```javascript
-// Example of what your code might include:
-function createCard() {
-    // Collect information
-    const firstName = prompt("Enter your first name:");
-    const lastName = prompt("Enter your last name:");
-    const age = parseInt(prompt("Enter your age:"));
-    const city = prompt("Enter your city:");
-    const favoriteColor = prompt("Enter your favorite color:");
-    
-    // Validate and process data
-    if (isNaN(age) || age < 0) {
-        alert("Please enter a valid age!");
-        return;
-    }
-    
-    // Calculate additional information
-    const currentYear = new Date().getFullYear();
-    const birthYear = currentYear - age;
-    const ageGroup = getAgeGroup(age);
-    
-    // Generate unique ID
-    const userId = (firstName.slice(0,2) + lastName.slice(0,2) + age).toUpperCase();
-    
-    // Create personalized message
-    const greeting = generateGreeting(ageGroup, firstName);
-    
-    // Display the card
-    displayCard(firstName, lastName, age, city, favoriteColor, birthYear, userId, greeting, ageGroup);
-}
+### Expected Output:
+```
+Hello Sarah!
+You are 25 years old.
+You were born in 1999.
+You have been alive for approximately 9,125 days!
 ```
 
-### Extension Ideas:
-
-Once you complete the basic project, try adding:
-- **Photo upload**: Allow users to add a profile picture
-- **Social media links**: Include optional social media handles
-- **Interests selection**: Multiple choice hobbies/interests
-- **Export functionality**: Download the card as an image
-- **Multiple cards**: Create and compare multiple profiles
-- **Local storage**: Save and reload user information
-- **Animation effects**: Smooth transitions and hover effects
-
-### Testing Checklist:
-
-- [ ] All prompts collect user information correctly
-- [ ] Age validation works (handles invalid input)
-- [ ] Names are properly capitalized
-- [ ] Card styling changes based on age group
-- [ ] Favorite color is incorporated into the design
-- [ ] Birth year calculation is accurate
-- [ ] All information displays correctly
-- [ ] Card is visually appealing and responsive
+### Key Concepts to Practice:
+- Using `const` and `let` appropriately
+- Converting strings to numbers with `parseInt()`
+- Template literals for formatted output
+- Basic math operations
+- Getting current year with `new Date().getFullYear()`
 
 ---
 
@@ -464,4 +320,4 @@ Before moving to Part 3, ensure you can:
 
 ## Next Steps
 
-Once you've mastered variables and basic input/output and completed your Personal Information Card project, you're ready to move on to [Part 3: Making Decisions with Conditionals](3_conditionals.md) where you'll learn to make your programs respond intelligently to different situations.
+Once you've mastered variables and basic input/output and completed your Age Calculator project, you're ready to move on to [Part 3: Making Decisions with Conditionals](3_conditionals.md) where you'll learn to make your programs respond intelligently to different situations.

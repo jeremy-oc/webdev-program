@@ -141,36 +141,29 @@ function demonstrateScope() {
 
 ---
 
-## Mini Project: Multi-Function Calculator
+## Mini Project: Tip Calculator
 
-Build a comprehensive calculator that performs various operations, with each operation implemented as a separate function.
+Build a simple but complete tip calculator that demonstrates various function concepts.
 
 ### Project Requirements:
 
-1. **Basic Operations:**
-   - Addition, subtraction, multiplication, division
-   - Each operation as a separate function
-   - Error handling for division by zero
+1. **Basic Calculation Functions:**
+   - Calculate tip amount based on bill and percentage
+   - Calculate total amount including tip
+   - Split total among multiple people
 
-2. **Advanced Operations:**
-   - Percentage calculations
-   - Power/exponent calculations
-   - Square root and nth root
-   - Factorial calculation
+2. **Validation Functions:**
+   - Validate bill amount (positive number)
+   - Validate tip percentage (reasonable range)
+   - Validate number of people (positive integer)
 
 3. **User Interface:**
-   - Clean, responsive calculator layout
-   - Button interactions for all operations
-   - Display showing current operation and result
-   - Clear and reset functionality
+   - Input fields for bill amount, tip percentage, and number of people
+   - Preset buttons for common tip percentages
+   - Real-time calculation display
+   - Clear formatting for currency amounts
 
-4. **Enhanced Features:**
-   - Memory functions (store, recall, clear)
-   - History of calculations
-   - Keyboard support
-   - Scientific notation for large numbers
-
-### Starter Code Structure:
+### Starter Code:
 
 ```html
 <!DOCTYPE html>
@@ -178,571 +171,21 @@ Build a comprehensive calculator that performs various operations, with each ope
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Function Calculator</title>
+    <title>Tip Calculator</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0;
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 50px auto;
             padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: #f5f5f5;
         }
         
         .calculator {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            max-width: 400px;
-            width: 100%;
-        }
-        
-        .display {
-            background: #1a1a1a;
-            color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: right;
-            min-height: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .display-operation {
-            font-size: 14px;
-            color: #888;
-            margin-bottom: 5px;
-        }
-        
-        .display-result {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-        
-        button {
-            padding: 20px;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .btn-number {
-            background: #f0f0f0;
-            color: #333;
-        }
-        
-        .btn-operator {
-            background: #ff9500;
-            color: white;
-        }
-        
-        .btn-function {
-            background: #a6a6a6;
-            color: white;
-        }
-        
-        .btn-equals {
-            background: #ff9500;
-            color: white;
-            grid-column: span 2;
-        }
-        
-        .btn-zero {
-            grid-column: span 2;
-        }
-        
-        .memory-functions {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .btn-memory {
-            background: #34495e;
-            color: white;
-            padding: 10px;
-            font-size: 14px;
-        }
-        
-        .history {
-            max-height: 150px;
-            overflow-y: auto;
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 10px;
-            margin-top: 15px;
-            font-size: 12px;
-        }
-        
-        .history-item {
-            padding: 5px 0;
-            border-bottom: 1px solid #dee2e6;
-        }
-    </style>
-</head>
-<body>
-    <div class="calculator">
-        <div class="display">
-            <div id="displayOperation" class="display-operation"></div>
-            <div id="displayResult" class="display-result">0</div>
-        </div>
-        
-        <div class="memory-functions">
-            <button class="btn-memory" onclick="memoryStore()">MS</button>
-            <button class="btn-memory" onclick="memoryRecall()">MR</button>
-            <button class="btn-memory" onclick="memoryClear()">MC</button>
-        </div>
-        
-        <div class="buttons">
-            <button class="btn-function" onclick="clearAll()">AC</button>
-            <button class="btn-function" onclick="clearEntry()">CE</button>
-            <button class="btn-function" onclick="percentage()">%</button>
-            <button class="btn-operator" onclick="setOperation('/')">÷</button>
-            
-            <button class="btn-number" onclick="inputNumber('7')">7</button>
-            <button class="btn-number" onclick="inputNumber('8')">8</button>
-            <button class="btn-number" onclick="inputNumber('9')">9</button>
-            <button class="btn-operator" onclick="setOperation('*')">×</button>
-            
-            <button class="btn-number" onclick="inputNumber('4')">4</button>
-            <button class="btn-number" onclick="inputNumber('5')">5</button>
-            <button class="btn-number" onclick="inputNumber('6')">6</button>
-            <button class="btn-operator" onclick="setOperation('-')">−</button>
-            
-            <button class="btn-number" onclick="inputNumber('1')">1</button>
-            <button class="btn-number" onclick="inputNumber('2')">2</button>
-            <button class="btn-number" onclick="inputNumber('3')">3</button>
-            <button class="btn-operator" onclick="setOperation('+')">+</button>
-            
-            <button class="btn-number btn-zero" onclick="inputNumber('0')">0</button>
-            <button class="btn-number" onclick="inputDecimal()">.</button>
-            <button class="btn-equals" onclick="calculate()">=</button>
-        </div>
-        
-        <div class="buttons" style="margin-top: 15px;">
-            <button class="btn-function" onclick="squareRoot()">√</button>
-            <button class="btn-function" onclick="power()">x²</button>
-            <button class="btn-function" onclick="factorial()">n!</button>
-            <button class="btn-function" onclick="inverse()">1/x</button>
-        </div>
-        
-        <div id="history" class="history" style="display: none;">
-            <strong>History:</strong>
-            <div id="historyList"></div>
-        </div>
-        
-        <button onclick="toggleHistory()" style="width: 100%; margin-top: 10px; padding: 8px; background: #6c757d; color: white; border: none; border-radius: 5px;">
-            Toggle History
-        </button>
-    </div>
-
-    <script>
-        // Global variables
-        let currentNumber = '0';
-        let previousNumber = null;
-        let operation = null;
-        let waitingForNewNumber = false;
-        let memory = 0;
-        let history = [];
-        
-        // Basic arithmetic functions
-        function add(a, b) {
-            return a + b;
-        }
-        
-        function subtract(a, b) {
-            return a - b;
-        }
-        
-        function multiply(a, b) {
-            return a * b;
-        }
-        
-        function divide(a, b) {
-            if (b === 0) {
-                throw new Error("Cannot divide by zero");
-            }
-            return a / b;
-        }
-        
-        // Advanced mathematical functions
-        function calculatePercentage(number, percent) {
-            return (number * percent) / 100;
-        }
-        
-        function calculatePower(base, exponent) {
-            return Math.pow(base, exponent);
-        }
-        
-        function calculateSquareRoot(number) {
-            if (number < 0) {
-                throw new Error("Cannot calculate square root of negative number");
-            }
-            return Math.sqrt(number);
-        }
-        
-        function calculateFactorial(n) {
-            if (n < 0 || !Number.isInteger(n)) {
-                throw new Error("Factorial is only defined for non-negative integers");
-            }
-            if (n === 0 || n === 1) return 1;
-            let result = 1;
-            for (let i = 2; i <= n; i++) {
-                result *= i;
-            }
-            return result;
-        }
-        
-        function calculateInverse(number) {
-            if (number === 0) {
-                throw new Error("Cannot calculate inverse of zero");
-            }
-            return 1 / number;
-        }
-        
-        // Calculator interface functions
-        function updateDisplay() {
-            document.getElementById('displayResult').textContent = currentNumber;
-            if (operation && previousNumber !== null) {
-                document.getElementById('displayOperation').textContent = 
-                    `${previousNumber} ${getOperationSymbol(operation)}`;
-            } else {
-                document.getElementById('displayOperation').textContent = '';
-            }
-        }
-        
-        function getOperationSymbol(op) {
-            const symbols = { '+': '+', '-': '−', '*': '×', '/': '÷' };
-            return symbols[op] || op;
-        }
-        
-        function inputNumber(num) {
-            if (waitingForNewNumber) {
-                currentNumber = num;
-                waitingForNewNumber = false;
-            } else {
-                currentNumber = currentNumber === '0' ? num : currentNumber + num;
-            }
-            updateDisplay();
-        }
-        
-        function inputDecimal() {
-            if (waitingForNewNumber) {
-                currentNumber = '0.';
-                waitingForNewNumber = false;
-            } else if (!currentNumber.includes('.')) {
-                currentNumber += '.';
-            }
-            updateDisplay();
-        }
-        
-        function setOperation(op) {
-            if (operation && !waitingForNewNumber) {
-                calculate();
-            }
-            operation = op;
-            previousNumber = parseFloat(currentNumber);
-            waitingForNewNumber = true;
-        }
-        
-        function calculate() {
-            if (operation && previousNumber !== null && !waitingForNewNumber) {
-                try {
-                    const current = parseFloat(currentNumber);
-                    let result;
-                    
-                    switch (operation) {
-                        case '+':
-                            result = add(previousNumber, current);
-                            break;
-                        case '-':
-                            result = subtract(previousNumber, current);
-                            break;
-                        case '*':
-                            result = multiply(previousNumber, current);
-                            break;
-                        case '/':
-                            result = divide(previousNumber, current);
-                            break;
-                        default:
-                            return;
-                    }
-                    
-                    // Add to history
-                    addToHistory(`${previousNumber} ${getOperationSymbol(operation)} ${current} = ${result}`);
-                    
-                    currentNumber = formatResult(result);
-                    operation = null;
-                    previousNumber = null;
-                    waitingForNewNumber = true;
-                    
-                } catch (error) {
-                    currentNumber = 'Error';
-                    operation = null;
-                    previousNumber = null;
-                    alert(error.message);
-                }
-            }
-            updateDisplay();
-        }
-        
-        function formatResult(number) {
-            // Handle very large or very small numbers
-            if (Math.abs(number) > 1e10 || (Math.abs(number) < 1e-6 && number !== 0)) {
-                return number.toExponential(6);
-            }
-            // Round to avoid floating point precision issues
-            return (Math.round(number * 1e10) / 1e10).toString();
-        }
-        
-        // Advanced operation functions
-        function percentage() {
-            const current = parseFloat(currentNumber);
-            if (previousNumber !== null && operation) {
-                currentNumber = formatResult(calculatePercentage(previousNumber, current));
-            } else {
-                currentNumber = formatResult(current / 100);
-            }
-            addToHistory(`${parseFloat(currentNumber)} %`);
-            waitingForNewNumber = true;
-            updateDisplay();
-        }
-        
-        function squareRoot() {
-            try {
-                const current = parseFloat(currentNumber);
-                const result = calculateSquareRoot(current);
-                addToHistory(`√${current} = ${result}`);
-                currentNumber = formatResult(result);
-                waitingForNewNumber = true;
-                updateDisplay();
-            } catch (error) {
-                alert(error.message);
-            }
-        }
-        
-        function power() {
-            const current = parseFloat(currentNumber);
-            const result = calculatePower(current, 2);
-            addToHistory(`${current}² = ${result}`);
-            currentNumber = formatResult(result);
-            waitingForNewNumber = true;
-            updateDisplay();
-        }
-        
-        function factorial() {
-            try {
-                const current = parseFloat(currentNumber);
-                const result = calculateFactorial(current);
-                addToHistory(`${current}! = ${result}`);
-                currentNumber = formatResult(result);
-                waitingForNewNumber = true;
-                updateDisplay();
-            } catch (error) {
-                alert(error.message);
-            }
-        }
-        
-        function inverse() {
-            try {
-                const current = parseFloat(currentNumber);
-                const result = calculateInverse(current);
-                addToHistory(`1/${current} = ${result}`);
-                currentNumber = formatResult(result);
-                waitingForNewNumber = true;
-                updateDisplay();
-            } catch (error) {
-                alert(error.message);
-            }
-        }
-        
-        // Memory functions
-        function memoryStore() {
-            memory = parseFloat(currentNumber);
-            addToHistory(`Memory stored: ${memory}`);
-        }
-        
-        function memoryRecall() {
-            currentNumber = formatResult(memory);
-            waitingForNewNumber = true;
-            updateDisplay();
-        }
-        
-        function memoryClear() {
-            memory = 0;
-            addToHistory("Memory cleared");
-        }
-        
-        // Clear functions
-        function clearAll() {
-            currentNumber = '0';
-            previousNumber = null;
-            operation = null;
-            waitingForNewNumber = false;
-            updateDisplay();
-        }
-        
-        function clearEntry() {
-            currentNumber = '0';
-            updateDisplay();
-        }
-        
-        // History functions
-        function addToHistory(calculation) {
-            history.unshift(calculation);
-            if (history.length > 20) {
-                history = history.slice(0, 20);
-            }
-            updateHistoryDisplay();
-        }
-        
-        function updateHistoryDisplay() {
-            const historyList = document.getElementById('historyList');
-            historyList.innerHTML = history.map(item => 
-                `<div class="history-item">${item}</div>`
-            ).join('');
-        }
-        
-        function toggleHistory() {
-            const historyDiv = document.getElementById('history');
-            historyDiv.style.display = historyDiv.style.display === 'none' ? 'block' : 'none';
-        }
-        
-        // Keyboard support
-        document.addEventListener('keydown', function(event) {
-            const key = event.key;
-            
-            if (key >= '0' && key <= '9') {
-                inputNumber(key);
-            } else if (key === '.') {
-                inputDecimal();
-            } else if (key === '+' || key === '-' || key === '*' || key === '/') {
-                setOperation(key);
-            } else if (key === 'Enter' || key === '=') {
-                calculate();
-            } else if (key === 'Escape' || key === 'c' || key === 'C') {
-                clearAll();
-            } else if (key === 'Backspace') {
-                clearEntry();
-            }
-        });
-        
-        // Initialize display
-        updateDisplay();
-    </script>
-</body>
-</html>
-```
-
-### Helpful Concepts to Explore:
-
-**JavaScript Concepts:**
-- Function declarations, expressions, and arrow functions
-- Parameters, default values, and rest parameters
-- Return values and error handling with try/catch
-- Scope and variable accessibility
-- Event handling and keyboard input
-- Array methods for history management
-
-**HTML Concepts:**
-- CSS Grid for calculator button layout
-- Event handling with onclick attributes
-- Dynamic content updates
-- Accessibility considerations for calculator interface
-
-**CSS Concepts:**
-- CSS Grid for responsive button layouts
-- Hover effects and transitions
-- Color theming and visual feedback
-- Responsive design for different screen sizes
-
-### Extension Ideas:
-
-Once you complete the basic calculator, try adding:
-- **Scientific functions**: Sin, cos, tan, logarithms
-- **Unit converter**: Length, weight, temperature conversions
-- **Currency calculator**: Real-time exchange rates
-- **Graphing capability**: Simple function plotting
-- **Custom themes**: Dark mode, color customization
-- **Voice input**: Speech recognition for calculations
-- **Export functionality**: Save calculations to file
-
----
-
-## Mini Project: Tip Calculator
-
-Build a sophisticated tip calculator that handles various scenarios and provides detailed breakdowns.
-
-### Project Requirements:
-
-1. **Basic Calculation:**
-   - Bill amount input
-   - Tip percentage selection
-   - Number of people splitting the bill
-   - Calculate tip amount and total per person
-
-2. **Preset Options:**
-   - Quick buttons for common tip percentages (15%, 18%, 20%, 25%)
-   - Service quality descriptors
-   - Custom tip percentage input
-
-3. **Advanced Features:**
-   - Tax handling (before or after tip calculation)
-   - Rounding options (round up, down, or to nearest dollar)
-   - Split bill unevenly (different amounts per person)
-   - Currency formatting for different locales
-
-4. **User Experience:**
-   - Real-time calculation updates
-   - Clear breakdown of all amounts
-   - Save favorite settings
-   - Share calculation results
-
-### Starter Code Structure:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Tip Calculator</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
             background: white;
-            border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .input-group {
@@ -751,40 +194,33 @@ Build a sophisticated tip calculator that handles various scenarios and provides
         
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             font-weight: bold;
-            color: #333;
         }
         
         input {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
             font-size: 16px;
-            transition: border-color 0.3s;
-        }
-        
-        input:focus {
-            outline: none;
-            border-color: #667eea;
+            box-sizing: border-box;
         }
         
         .tip-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             margin: 15px 0;
         }
         
         .tip-btn {
-            padding: 12px;
-            border: 2px solid #e0e0e0;
+            padding: 10px;
+            border: 2px solid #ddd;
             background: white;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
             text-align: center;
-            font-weight: bold;
             transition: all 0.3s;
         }
         
@@ -793,387 +229,190 @@ Build a sophisticated tip calculator that handles various scenarios and provides
         }
         
         .tip-btn.active {
-            background: #667eea;
+            background: #007bff;
             color: white;
-            border-color: #667eea;
+            border-color: #007bff;
         }
         
         .results {
             background: #f8f9fa;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 25px 0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
         }
         
         .result-row {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .result-row:last-child {
-            border-bottom: none;
-            font-weight: bold;
+            margin: 10px 0;
             font-size: 18px;
-            color: #667eea;
         }
         
-        .amount {
+        .total {
             font-weight: bold;
-            color: #2c3e50;
-        }
-        
-        .total-amount {
-            font-size: 24px;
-            color: #27ae60;
-        }
-        
-        .options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .option-group {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-        }
-        
-        select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        
-        .share-btn {
-            background: #27ae60;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-            margin-top: 15px;
-        }
-        
-        .share-btn:hover {
-            background: #219a52;
+            color: #007bff;
+            border-top: 2px solid #ddd;
+            padding-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>💰 Smart Tip Calculator</h1>
-        <p>Calculate tips and split bills with ease</p>
+    <div class="calculator">
+        <h1>💰 Tip Calculator</h1>
         
         <div class="input-group">
             <label for="billAmount">Bill Amount ($)</label>
-            <input type="number" id="billAmount" placeholder="Enter bill amount" step="0.01" oninput="calculateTip()">
+            <input type="number" id="billAmount" placeholder="Enter bill amount" step="0.01">
         </div>
         
         <div class="input-group">
-            <label>Tip Percentage</label>
+            <label>Select Tip Percentage</label>
             <div class="tip-buttons">
-                <div class="tip-btn" data-tip="15" onclick="selectTip(15)">
-                    15%<br><small>Fair</small>
-                </div>
-                <div class="tip-btn" data-tip="18" onclick="selectTip(18)">
-                    18%<br><small>Good</small>
-                </div>
-                <div class="tip-btn active" data-tip="20" onclick="selectTip(20)">
-                    20%<br><small>Great</small>
-                </div>
-                <div class="tip-btn" data-tip="25" onclick="selectTip(25)">
-                    25%<br><small>Excellent</small>
-                </div>
+                <div class="tip-btn" data-tip="15">15%</div>
+                <div class="tip-btn" data-tip="18">18%</div>
+                <div class="tip-btn active" data-tip="20">20%</div>
+                <div class="tip-btn" data-tip="25">25%</div>
             </div>
-            <input type="number" id="customTip" placeholder="Custom tip %" min="0" max="100" oninput="selectCustomTip()">
+            <input type="number" id="customTip" placeholder="Custom tip %" min="0" max="100">
         </div>
         
         <div class="input-group">
             <label for="peopleCount">Number of People</label>
-            <input type="number" id="peopleCount" value="1" min="1" oninput="calculateTip()">
+            <input type="number" id="peopleCount" value="1" min="1">
         </div>
         
-        <div class="options">
-            <div class="option-group">
-                <label for="taxOption">Tax Calculation</label>
-                <select id="taxOption" onchange="calculateTip()">
-                    <option value="none">No tax</option>
-                    <option value="before">Calculate tip before tax</option>
-                    <option value="after">Calculate tip after tax</option>
-                </select>
-                <input type="number" id="taxRate" placeholder="Tax rate %" step="0.01" style="margin-top: 5px;" oninput="calculateTip()">
-            </div>
-            
-            <div class="option-group">
-                <label for="roundingOption">Rounding</label>
-                <select id="roundingOption" onchange="calculateTip()">
-                    <option value="none">No rounding</option>
-                    <option value="up">Round up</option>
-                    <option value="down">Round down</option>
-                    <option value="nearest">Round to nearest dollar</option>
-                </select>
-            </div>
-        </div>
-        
-        <div id="results" class="results">
+        <div class="results">
             <div class="result-row">
-                <span>Subtotal:</span>
-                <span id="subtotal" class="amount">$0.00</span>
-            </div>
-            <div class="result-row">
-                <span>Tax:</span>
-                <span id="taxAmount" class="amount">$0.00</span>
+                <span>Bill Amount:</span>
+                <span id="displayBill">$0.00</span>
             </div>
             <div class="result-row">
                 <span>Tip (<span id="tipPercent">20</span>%):</span>
-                <span id="tipAmount" class="amount">$0.00</span>
+                <span id="tipAmount">$0.00</span>
             </div>
             <div class="result-row">
                 <span>Total:</span>
-                <span id="totalAmount" class="total-amount">$0.00</span>
+                <span id="totalAmount">$0.00</span>
             </div>
-            <div class="result-row">
+            <div class="result-row total">
                 <span>Per Person:</span>
-                <span id="perPersonAmount" class="total-amount">$0.00</span>
+                <span id="perPersonAmount">$0.00</span>
             </div>
         </div>
-        
-        <button class="share-btn" onclick="shareCalculation()">📤 Share Calculation</button>
     </div>
 
     <script>
+        // Global variable to track current tip percentage
         let currentTipPercent = 20;
         
         // Core calculation functions
-        function calculateSubtotal(billAmount, taxRate, taxOption) {
-            if (taxOption === 'before') {
-                return billAmount / (1 + taxRate / 100);
-            }
-            return billAmount;
+        function calculateTipAmount(billAmount, tipPercent) {
+            // TODO: Calculate tip amount
+            // Hint: tip = bill * (percentage / 100)
         }
         
-        function calculateTax(subtotal, taxRate) {
-            return subtotal * (taxRate / 100);
+        function calculateTotal(billAmount, tipAmount) {
+            // TODO: Calculate total amount
+            // Hint: total = bill + tip
         }
         
-        function calculateTipAmount(baseAmount, tipPercent) {
-            return baseAmount * (tipPercent / 100);
-        }
-        
-        function calculateTotal(subtotal, tax, tip) {
-            return subtotal + tax + tip;
-        }
-        
-        function calculatePerPerson(total, peopleCount) {
-            return total / peopleCount;
-        }
-        
-        // Rounding functions
-        function applyRounding(amount, roundingOption) {
-            switch (roundingOption) {
-                case 'up':
-                    return Math.ceil(amount);
-                case 'down':
-                    return Math.floor(amount);
-                case 'nearest':
-                    return Math.round(amount);
-                default:
-                    return amount;
-            }
-        }
-        
-        // Formatting functions
-        function formatCurrency(amount) {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 2
-            }).format(amount);
-        }
-        
-        function formatPercent(percent) {
-            return percent.toFixed(1);
-        }
-        
-        // UI interaction functions
-        function selectTip(percent) {
-            currentTipPercent = percent;
-            
-            // Update UI
-            document.querySelectorAll('.tip-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`[data-tip="${percent}"]`).classList.add('active');
-            document.getElementById('customTip').value = '';
-            
-            calculateTip();
-        }
-        
-        function selectCustomTip() {
-            const customValue = parseFloat(document.getElementById('customTip').value);
-            if (!isNaN(customValue) && customValue >= 0) {
-                currentTipPercent = customValue;
-                
-                // Remove active class from preset buttons
-                document.querySelectorAll('.tip-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                calculateTip();
-            }
-        }
-        
-        // Main calculation function
-        function calculateTip() {
-            const billAmount = parseFloat(document.getElementById('billAmount').value) || 0;
-            const peopleCount = parseInt(document.getElementById('peopleCount').value) || 1;
-            const taxOption = document.getElementById('taxOption').value;
-            const taxRate = parseFloat(document.getElementById('taxRate').value) || 0;
-            const roundingOption = document.getElementById('roundingOption').value;
-            
-            if (billAmount <= 0) {
-                resetResults();
-                return;
-            }
-            
-            // Calculate amounts step by step
-            let subtotal = calculateSubtotal(billAmount, taxRate, taxOption);
-            let tax = 0;
-            
-            if (taxOption !== 'none' && taxRate > 0) {
-                if (taxOption === 'before') {
-                    tax = billAmount - subtotal;
-                } else {
-                    tax = calculateTax(subtotal, taxRate);
-                }
-            }
-            
-            // Determine base amount for tip calculation
-            const tipBaseAmount = taxOption === 'after' ? subtotal + tax : subtotal;
-            let tip = calculateTipAmount(tipBaseAmount, currentTipPercent);
-            
-            let total = calculateTotal(subtotal, tax, tip);
-            
-            // Apply rounding to appropriate amounts
-            if (roundingOption !== 'none') {
-                tip = applyRounding(tip, roundingOption);
-                total = subtotal + tax + tip;
-            }
-            
-            const perPerson = calculatePerPerson(total, peopleCount);
-            
-            // Update display
-            updateResults(subtotal, tax, tip, total, perPerson);
-        }
-        
-        function updateResults(subtotal, tax, tip, total, perPerson) {
-            document.getElementById('subtotal').textContent = formatCurrency(subtotal);
-            document.getElementById('taxAmount').textContent = formatCurrency(tax);
-            document.getElementById('tipAmount').textContent = formatCurrency(tip);
-            document.getElementById('totalAmount').textContent = formatCurrency(total);
-            document.getElementById('perPersonAmount').textContent = formatCurrency(perPerson);
-            document.getElementById('tipPercent').textContent = formatPercent(currentTipPercent);
-        }
-        
-        function resetResults() {
-            document.getElementById('subtotal').textContent = '$0.00';
-            document.getElementById('taxAmount').textContent = '$0.00';
-            document.getElementById('tipAmount').textContent = '$0.00';
-            document.getElementById('totalAmount').textContent = '$0.00';
-            document.getElementById('perPersonAmount').textContent = '$0.00';
-        }
-        
-        // Sharing functionality
-        function shareCalculation() {
-            const billAmount = parseFloat(document.getElementById('billAmount').value) || 0;
-            const peopleCount = parseInt(document.getElementById('peopleCount').value) || 1;
-            const subtotal = document.getElementById('subtotal').textContent;
-            const tip = document.getElementById('tipAmount').textContent;
-            const total = document.getElementById('totalAmount').textContent;
-            const perPerson = document.getElementById('perPersonAmount').textContent;
-            
-            const shareText = `💰 Tip Calculator Results:
-Bill: ${formatCurrency(billAmount)}
-Tip (${formatPercent(currentTipPercent)}%): ${tip}
-Total: ${total}
-Per Person (${peopleCount}): ${perPerson}`;
-            
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Tip Calculator Results',
-                    text: shareText
-                }).catch(console.error);
-            } else {
-                // Fallback: copy to clipboard
-                navigator.clipboard.writeText(shareText).then(() => {
-                    alert('Calculation copied to clipboard!');
-                }).catch(() => {
-                    alert('Share text:\n\n' + shareText);
-                });
-            }
+        function calculatePerPerson(totalAmount, peopleCount) {
+            // TODO: Calculate amount per person
+            // Hint: per person = total / number of people
         }
         
         // Validation functions
-        function validateBillAmount(amount) {
-            return !isNaN(amount) && amount > 0;
+        function isValidBillAmount(amount) {
+            // TODO: Check if bill amount is valid
+            // Hint: should be a positive number
         }
         
-        function validateTipPercent(percent) {
-            return !isNaN(percent) && percent >= 0 && percent <= 100;
+        function isValidTipPercent(percent) {
+            // TODO: Check if tip percentage is valid
+            // Hint: should be between 0 and 100
         }
         
-        function validatePeopleCount(count) {
-            return Number.isInteger(count) && count > 0;
+        function isValidPeopleCount(count) {
+            // TODO: Check if people count is valid
+            // Hint: should be a positive integer
         }
         
-        // Initialize calculator
-        calculateTip();
+        // Utility functions
+        function formatCurrency(amount) {
+            // TODO: Format number as currency
+            // Hint: use toFixed(2) and add $ sign
+        }
+        
+        function updateDisplay() {
+            // TODO: Update all display elements with calculated values
+            // Get input values, validate them, calculate results, and update display
+        }
+        
+        // Event handling functions
+        function handleTipButtonClick(event) {
+            // TODO: Handle tip percentage button clicks
+            // Update active button, set current tip percent, and recalculate
+        }
+        
+        function handleCustomTipInput() {
+            // TODO: Handle custom tip percentage input
+            // Validate input, update current tip percent, and recalculate
+        }
+        
+        // Initialize event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // TODO: Add event listeners for all inputs and buttons
+            // Listen for: bill amount changes, people count changes, tip button clicks, custom tip input
+        });
+        
+        // Initial display update
+        updateDisplay();
     </script>
 </body>
 </html>
 ```
 
-### Helpful Concepts to Explore:
+### Implementation Steps:
 
-**JavaScript Concepts:**
-- Function organization and modular design
-- Input validation and error handling
-- Number formatting and internationalization
-- DOM manipulation for dynamic updates
-- Event handling for user interactions
-- Conditional logic for different calculation modes
+1. **Start with calculation functions:**
+   - Implement `calculateTipAmount()`, `calculateTotal()`, and `calculatePerPerson()`
+   - Test these functions with sample data in the console
 
-**HTML Concepts:**
-- Form inputs with validation attributes
-- Grid layouts for responsive button arrangements
-- Semantic structure for accessibility
-- Progressive enhancement for mobile devices
+2. **Add validation functions:**
+   - Implement validation for bill amount, tip percentage, and people count
+   - Consider edge cases (negative numbers, zero, etc.)
 
-**CSS Concepts:**
-- CSS Grid for flexible layouts
-- Interactive button states and transitions
-- Visual hierarchy with typography and spacing
-- Responsive design for various screen sizes
+3. **Create utility functions:**
+   - Implement `formatCurrency()` to display money properly
+   - Make sure to handle rounding appropriately
+
+4. **Build the update system:**
+   - Implement `updateDisplay()` to get inputs, validate, calculate, and show results
+   - This is the main function that ties everything together
+
+5. **Add interactivity:**
+   - Implement event handlers for tip buttons and custom input
+   - Make sure the interface responds to all user interactions
+
+6. **Test and refine:**
+   - Test with various inputs including edge cases
+   - Add error handling and user feedback
+
+### Key Learning Points:
+
+- **Function organization**: Each calculation is a separate, testable function
+- **Validation**: Functions to check input validity before processing
+- **Event handling**: Functions to respond to user interactions
+- **DOM manipulation**: Functions to update the display
+- **Error handling**: Graceful handling of invalid inputs
 
 ### Extension Ideas:
 
-Once you complete the basic tip calculator, try adding:
-- **Service quality survey**: Rate service and suggest tip accordingly
-- **Multiple currency support**: Different currencies and exchange rates
-- **Bill item breakdown**: Individual items with different tip rates
-- **Group expense tracking**: Multiple bills and shared expenses
-- **Receipt scanning**: OCR to extract bill amounts from photos
-- **Expense analytics**: Track spending patterns over time
-- **Integration**: Connect with payment apps or expense trackers
+Once you complete the basic calculator, try adding:
+- **Rounding options**: Round up, down, or to nearest dollar
+- **Service quality feedback**: Suggest tip based on service rating
+- **Save calculations**: Store and recall previous calculations
+- **Different currencies**: Support for multiple currency formats
 
 ---
 
@@ -1231,28 +470,6 @@ function onError(error) {
 }
 
 processUserData({ name: "Alice" }, onSuccess, onError);
-```
-
-### Immediately Invoked Function Expressions (IIFE)
-
-Functions that execute immediately upon definition:
-
-```javascript
-// IIFE to avoid polluting global namespace
-(function() {
-    const privateVariable = "This won't be accessible outside";
-    
-    function privateFunction() {
-        console.log("This function is private");
-    }
-    
-    // Only expose what's needed
-    window.myModule = {
-        publicMethod: function() {
-            return "This is public";
-        }
-    };
-})();
 ```
 
 ---
@@ -1338,4 +555,4 @@ Before moving to Part 5, ensure you can:
 
 ## Next Steps
 
-Once you've mastered functions and completed both calculator projects, you're ready to move on to [Part 5: Loops - Repeating Tasks](5_loops.md) where you'll learn to automate repetitive tasks and work with collections of data.
+Once you've mastered functions and completed the tip calculator project, you're ready to move on to [Part 5: Loops - Repeating Tasks](5_loops.md) where you'll learn to automate repetitive tasks and work with collections of data.
