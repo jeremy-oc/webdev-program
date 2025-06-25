@@ -25,9 +25,6 @@ By the end of this module, you will be able to:
 
 ## Table of Contents
 
-### Project Work: Interactive Web Applications Portfolio
-*Reference: [project_interactive-portfolio.md](project_interactive-portfolio.md)*
-
 ### Part 1: Getting Started with the Basics
 *Reference: [1_javascript-basics.md](1_javascript-basics.md)*
 

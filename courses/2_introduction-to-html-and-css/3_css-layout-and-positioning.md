@@ -10,7 +10,7 @@ For the introduction to HTML & CSS we will be learning with the [The Odin Projec
 ### Task 1
 1. Work through the [Flexbox](https://www.theodinproject.com/paths/foundations/courses/foundations#flexbox) section of the "The Odin Project" Foundations course.
 2. Interactivly work through the [Learn CSS Flexbox by building a Photo Gallery](https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-css-flexbox-by-building-a-photo-gallery/) course.
-3. If you prefer a crash course like tutorial there is a good overview available on YouTube by Traversy Media [Flexbox Crash Course](https://www.youtube.com/watch?v=3YW65K6LcIA&t=496s)
+3. If you prefer a crash course like tutorial there is a good overview available on YouTube by Traversy Media [Flexbox Crash Course](https://www.youtube.com/watch?v=3YW65K6LcIA)
 4. Additionally you can strengthen your CSS Flexbox skills in the "Flexbox Froggy" game: [Flexbox Froggy](https://flexboxfroggy.com/)
 
 ### Additional Properties and Recap of the content
@@ -731,7 +731,6 @@ p { font-size: 1rem; }       /* 16px */
 
 **Resources:**
 - **MDN Responsive Design**: [Responsive design](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
-- **The Odin Project**: [Responsive Design](https://www.theodinproject.com/lessons/intermediate-html-and-css-responsive-design)
 - **W3Schools Responsive Web Design**: [RWD Introduction](https://www.w3schools.com/css/css_rwd_intro.asp)
 
 ---

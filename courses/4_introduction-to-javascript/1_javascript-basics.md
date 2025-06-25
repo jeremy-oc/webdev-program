@@ -1,5 +1,24 @@
 # Part 1: Getting Started with the Basics
 
+## Pre-Learning Video Tutorial
+
+**🎥 Reccommended Viewing: Net Ninja - Modern JavaScript Tutorial**
+**Topic: "Syntax Basics & Types"**
+
+Video: [https://www.youtube.com/watch?v=FhguwBJeqWs](https://www.youtube.com/watch?v=FhguwBJeqWs)
+
+Before diving into the text content and hands-on exercises below, watch this essential tutorial that covers the foundational concepts of JavaScript syntax and data types. This video will provide you with the visual and auditory learning foundation that complements the written materials.
+
+**What you'll learn in the video:**
+- JavaScript syntax fundamentals
+- Basic data types and their usage
+- Proper code structure and conventions
+- Common syntax patterns in modern JavaScript
+
+**Note:** Take notes while watching and refer back to them as you work through the exercises below.
+
+---
+
 ## What is JavaScript?
 
 ### JavaScript's Role in Web Development
@@ -153,10 +172,12 @@ console.log("User's full name:", fullName);
 
 ## Mini Project: Simple Greeting App
 
+**🎯 Post-Video Application:** Now that you've watched the Net Ninja tutorial and read through the concepts above, it's time to apply what you've learned!
+
 Create a webpage that asks for the user's name and displays a personalized greeting.
 
 ### Project Goal:
-Build a simple interactive webpage that collects a user's name and shows them a welcome message.
+Build a simple interactive webpage that collects a user's name and shows them a welcome message, applying the syntax and type concepts from the video tutorial.
 
 ### Starter Code:
 ```html
@@ -172,6 +193,7 @@ Build a simple interactive webpage that collects a user's name and shows them a 
     <script>
         function greetUser() {
             // Your code here
+            // Remember the syntax patterns from the video!
         }
     </script>
 </body>
@@ -179,9 +201,11 @@ Build a simple interactive webpage that collects a user's name and shows them a 
 ```
 
 ### Your Task:
-1. Ask the user for their name using `prompt()`
-2. Display a personalized greeting using `alert()`  
-3. Log the greeting to the console using `console.log()`
+1. **Apply video concepts**: Use proper JavaScript syntax as demonstrated in the tutorial
+2. Ask the user for their name using `prompt()`
+3. Display a personalized greeting using `alert()`  
+4. Log the greeting to the console using `console.log()`
+5. **Bonus**: Implement proper data type handling as shown in the video
 
 ### Expected Behavior:
 1. User clicks the "Say Hello" button
@@ -189,6 +213,12 @@ Build a simple interactive webpage that collects a user's name and shows them a 
 3. User enters their name and clicks OK
 4. Browser shows alert: "Hello, [Name]! Welcome to my website!"
 5. Console shows: "Greeting displayed for: [Name]"
+
+### Video Integration Checklist:
+- [ ] Applied proper JavaScript syntax from the tutorial
+- [ ] Used appropriate data types as demonstrated
+- [ ] Followed coding conventions shown in the video
+- [ ] Implemented clean, readable code structure
 
 ---
 
@@ -238,6 +268,7 @@ console.log("This shows in the developer console");
 ## Assessment Checklist
 
 Before moving to Part 2, ensure you can:
+- [ ] **Completed the Net Ninja video tutorial and took notes**
 - [ ] Explain what JavaScript is and its role in web development
 - [ ] Embed JavaScript in HTML using `<script>` tags
 - [ ] Use `console.log()` to output messages
@@ -245,6 +276,7 @@ Before moving to Part 2, ensure you can:
 - [ ] Create user interactions with `alert()` and `prompt()`
 - [ ] Combine user input with output messages
 - [ ] Debug basic JavaScript issues
+- [ ] **Apply syntax patterns learned from the video tutorial**
 
 ---
 
@@ -252,11 +284,9 @@ Before moving to Part 2, ensure you can:
 
 **Essential Learning:**
 - **MDN Web Docs**: [JavaScript First Steps](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps)
-- **freeCodeCamp**: [JavaScript Algorithms and Data Structures](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/)
 
 **Practice Platforms:**
-- **Codecademy**: [Introduction to JavaScript](https://www.codecademy.com/learn/introduction-to-javascript)
-- **The Odin Project**: [JavaScript Basics](https://www.theodinproject.com/paths/foundations/courses/foundations#javascript-basics)
+- **Codecademy**: [Introduction to JavaScript (Introduction)](https://www.codecademy.com/learn/introduction-to-javascript)
 
 **Developer Tools:**
 - **Chrome DevTools**: [Console Overview](https://developer.chrome.com/docs/devtools/console/)
@@ -266,4 +296,4 @@ Before moving to Part 2, ensure you can:
 
 ## Next Steps
 
-Once you've completed the Simple Greeting App and feel comfortable with basic JavaScript concepts, you're ready to move on to [Part 2: Variables and Basic Input/Output](2_variables-and-io.md) where you'll learn about modern variable declarations and working with different data types.
+Once you've completed the Net Ninja video tutorial, worked through the Simple Greeting App, and feel comfortable with basic JavaScript concepts, you're ready to move on to [Part 2: Variables and Basic Input/Output](2_variables-and-io.md) where you'll learn about modern variable declarations and working with different data types.

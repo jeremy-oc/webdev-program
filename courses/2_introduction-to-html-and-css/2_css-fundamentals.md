@@ -44,8 +44,6 @@ p {
 **Resources:**
 - **MDN CSS Basics**: [CSS Basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
 - **W3Schools CSS Tutorial**: [CSS Introduction](https://www.w3schools.com/css/css_intro.asp)
-- **The Odin Project**: [CSS Foundations](https://www.theodinproject.com/lessons/foundations-css-foundations)
-- **YouTube CSS Crash Course**: [CSS Crash Course for Beginners](https://www.youtube.com/watch?v=yfoY53QXEnI) *(placeholder link)*
 
 #### CSS Syntax and Structure
 

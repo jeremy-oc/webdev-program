@@ -121,7 +121,6 @@ Accessibility provides significant business benefits beyond legal compliance:
 ```
 
 **Resources:**
-- **WebAIM Legal Requirements**: [Legal Requirements](https://webaim.org/articles/laws/)
 - **W3C Policy Resources**: [Web Accessibility Laws & Policies](https://www.w3.org/WAI/policies/)
 
 ---

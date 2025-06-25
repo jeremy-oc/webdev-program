@@ -390,7 +390,6 @@ Attributes provide additional information about HTML elements and are specified 
 **Resources:**
 - **FreeCodeCamp Interactive**: [Learn HTML Forms by Building a Registration Form](https://www.freecodecamp.org/learn/2022/responsive-web-design/learn-html-forms-by-building-a-registration-form/)
 - **MDN Web Forms**: [Your first web form](https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form)
-- **The Odin Project**: [HTML Forms](https://www.theodinproject.com/lessons/foundations-html-forms)
 
 ---
 

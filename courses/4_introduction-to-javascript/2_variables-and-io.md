@@ -1,8 +1,30 @@
 # Part 2: Variables and Basic Input/Output
 
+## Pre-Learning Video Tutorial (Continued)
+
+**🎥 Continue with: Net Ninja - Modern JavaScript Tutorial**
+**Topic: "Syntax Basics & Types"**
+
+Video: [https://www.youtube.com/watch?v=FhguwBJeqWs](https://www.youtube.com/watch?v=FhguwBJeqWs)
+
+If you haven't already completed the Net Ninja tutorial from Part 1, make sure to watch it now. This section builds directly on the syntax and type concepts covered in that video, particularly focusing on:
+
+**Advanced concepts from the video that apply to this section:**
+- Variable declaration best practices
+- Data type handling and conversion
+- Modern JavaScript syntax patterns
+- String manipulation techniques
+- Number operations and methods
+
+**Video Integration Note:** As you work through this section, refer back to the specific examples and patterns demonstrated in the tutorial, especially regarding variable declarations and data type operations.
+
+---
+
 ## Modern Variable Declarations
 
 ### Understanding `let` vs `const`
+
+**🎯 Video Connection:** The Net Ninja tutorial covers these modern declaration keywords. Apply those concepts here!
 
 Modern JavaScript uses two primary ways to declare variables: `let` and `const`. Understanding when to use each is crucial for writing clean, maintainable code.
 
@@ -42,7 +64,7 @@ isLoggedIn = true;
 
 ### Variable Naming Conventions
 
-**Good naming practices:**
+**Good naming practices (following video tutorial standards):**
 ```javascript
 // Use camelCase for variables
 const firstName = "John";
@@ -91,6 +113,8 @@ function calculateArea() {
 
 ## Working with Data Types
 
+**🎯 Video Reference:** This section directly applies the data type concepts from the Net Ninja tutorial. Review those examples as you work through these exercises.
+
 ### Strings and String Methods
 
 #### Creating Strings
@@ -131,7 +155,7 @@ const firstName = "John";
 const lastName = "Doe";
 const fullName = firstName + " " + lastName;
 
-// Better approach with template literals
+// Better approach with template literals (modern syntax from video)
 const greeting = `Hello, ${firstName} ${lastName}!`;
 const calculation = `The result is ${5 + 3}`;
 ```
@@ -171,6 +195,8 @@ console.log(Math.min(5, 10, 3)); // 3
 
 ### Template Literals for String Interpolation
 
+**🎯 Video Application:** This modern syntax feature should align with the patterns shown in the Net Ninja tutorial.
+
 Template literals (backticks) make string creation much more powerful:
 
 ```javascript
@@ -204,10 +230,12 @@ Tax: $${(shoppingCart.total * 0.08).toFixed(2)}
 
 ## Mini Project: Age Calculator
 
+**🎯 Post-Video Application:** This project integrates the syntax patterns and data type handling techniques from the Net Ninja tutorial.
+
 Build a simple age calculator that tells users interesting facts about their age.
 
 ### Project Goal:
-Create an app that calculates how many days, hours, and minutes someone has been alive.
+Create an app that calculates how many days, hours, and minutes someone has been alive, applying proper variable declarations and data type handling from the video tutorial.
 
 ### Starter Code:
 ```html
@@ -223,6 +251,8 @@ Create an app that calculates how many days, hours, and minutes someone has been
     <script>
         function calculateAge() {
             // Your code here
+            // Apply video concepts: proper variable declarations,
+            // data type handling, and modern syntax patterns
         }
     </script>
 </body>
@@ -230,11 +260,14 @@ Create an app that calculates how many days, hours, and minutes someone has been
 ```
 
 ### Your Task:
-1. Ask the user for their name and age using `prompt()`
-2. Calculate their birth year
-3. Calculate how many days they've been alive (roughly)
-4. Display all results using `alert()` with template literals
-5. Log the calculations to the console
+1. **Apply video concepts**: Use `const` and `let` appropriately as demonstrated in the tutorial
+2. Ask the user for their name and age using `prompt()`
+3. **Data type handling**: Properly convert string inputs to numbers (video concept)
+4. Calculate their birth year
+5. Calculate how many days they've been alive (roughly)
+6. **Modern syntax**: Use template literals for formatted output (video feature)
+7. Display all results using `alert()` with template literals
+8. Log the calculations to the console
 
 ### Expected Output:
 ```
@@ -244,16 +277,24 @@ You were born in 1999.
 You have been alive for approximately 9,125 days!
 ```
 
-### Key Concepts to Practice:
-- Using `const` and `let` appropriately
-- Converting strings to numbers with `parseInt()`
-- Template literals for formatted output
-- Basic math operations
+### Key Concepts to Practice (Video Integration):
+- Using `const` and `let` appropriately (video best practices)
+- Converting strings to numbers with `parseInt()` (data type handling from video)
+- Template literals for formatted output (modern syntax from video)
+- Basic math operations (number types from video)
 - Getting current year with `new Date().getFullYear()`
+
+### Video Integration Checklist:
+- [ ] Used proper variable declaration patterns from the tutorial
+- [ ] Applied data type conversion techniques shown in the video
+- [ ] Implemented modern string interpolation methods
+- [ ] Followed coding style and syntax conventions from the tutorial
 
 ---
 
 ## Common Variable Mistakes and Solutions
+
+**🎯 Video Reference:** These common mistakes align with the best practices covered in the Net Ninja tutorial.
 
 ### 1. Trying to Reassign `const` Variables
 ```javascript
@@ -266,23 +307,23 @@ let score = 0;
 score = 10; // Works fine
 ```
 
-### 2. Forgetting to Convert Strings to Numbers
+### 2. Forgetting to Convert Strings to Numbers (Video Concept)
 ```javascript
 // Wrong - this concatenates strings
 const userInput = prompt("Enter a number:");
 const result = userInput + 5; // "105" if user enters "10"
 
-// Correct - convert to number first
+// Correct - convert to number first (data type handling from video)
 const userInput = prompt("Enter a number:");
 const result = parseInt(userInput) + 5; // 15 if user enters "10"
 ```
 
-### 3. Template Literal Syntax Errors
+### 3. Template Literal Syntax Errors (Modern Syntax from Video)
 ```javascript
 // Wrong - using regular quotes
 const message = "Hello, ${name}!"; // Literal string, not interpolated
 
-// Correct - using backticks
+// Correct - using backticks (modern syntax from video)
 const message = `Hello, ${name}!`; // Properly interpolated
 ```
 
@@ -291,6 +332,7 @@ const message = `Hello, ${name}!`; // Properly interpolated
 ## Assessment Checklist
 
 Before moving to Part 3, ensure you can:
+- [ ] **Applied concepts from the Net Ninja video tutorial**
 - [ ] Choose between `let` and `const` appropriately
 - [ ] Create and manipulate strings using various methods
 - [ ] Work with numbers and perform basic calculations
@@ -298,6 +340,8 @@ Before moving to Part 3, ensure you can:
 - [ ] Understand variable scope basics
 - [ ] Collect and validate user input
 - [ ] Create dynamic content based on user data
+- [ ] **Handle data type conversions properly (video concept)**
+- [ ] **Use modern JavaScript syntax patterns (video standards)**
 
 ---
 
@@ -310,7 +354,6 @@ Before moving to Part 3, ensure you can:
 
 **Practice Platforms:**
 - **Codecademy**: [Variables and Data Types](https://www.codecademy.com/learn/introduction-to-javascript)
-- **freeCodeCamp**: [Basic JavaScript](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/)
 
 **Tools:**
 - **MDN**: [String Methods Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
@@ -320,4 +363,4 @@ Before moving to Part 3, ensure you can:
 
 ## Next Steps
 
-Once you've mastered variables and basic input/output and completed your Age Calculator project, you're ready to move on to [Part 3: Making Decisions with Conditionals](3_conditionals.md) where you'll learn to make your programs respond intelligently to different situations.
+Once you've completed the Net Ninja video tutorial concepts, mastered variables and basic input/output, and finished your Age Calculator project with proper modern JavaScript syntax, you're ready to move on to [Part 3: Making Decisions with Conditionals](3_conditionals.md) where you'll learn to make your programs respond intelligently to different situations.

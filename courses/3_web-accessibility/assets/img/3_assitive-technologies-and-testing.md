@@ -16,7 +16,7 @@ Screen readers are software applications that convert digital text and interface
 #### Getting Started:
 This section covers assistive technologies with a focus on screen readers, along with comprehensive testing methodologies.
 
-For learning about assistive technologies and testing, we will use resources from [WebAIM](https://webaim.org/), [Deque University](https://dequeuniversity.com/), and hands-on experience with actual screen reading software.
+For learning about assistive technologies and testing, we will use resources from [WebAIM](https://webaim.org/) and hands-on experience with actual screen reading software.
 
 ### Task 1
 1. Install a screen reader on your system (NVDA for Windows, VoiceOver for Mac, or Orca for Linux)
@@ -210,7 +210,6 @@ Understanding how assistive technologies work is essential for creating truly ac
 
 **Resources:**
 - **WebAIM Assistive Technologies**: [Introduction to Assistive Technologies](https://webaim.org/articles/motor/assistive)
-- **Microsoft Accessibility**: [Assistive Technology Compatibility](https://docs.microsoft.com/en-us/accessibility/)
 
 ---
 
@@ -593,7 +592,6 @@ Forms Navigation:
 
 **Resources:**
 - **WebAIM NVDA Guide**: [Using NVDA to Evaluate Web Accessibility](https://webaim.org/articles/nvda/)
-- **Apple VoiceOver Guide**: [VoiceOver Getting Started Guide](https://support.apple.com/guide/voiceover/welcome/mac)
 
 ---
 
@@ -985,7 +983,6 @@ textarea:focus {
 
 **Resources:**
 - **WebAIM Contrast Checker**: [Color Contrast Checker](https://webaim.org/resources/contrastchecker/)
-- **Deque axe DevTools**: [axe Browser Extensions](https://www.deque.com/axe/devtools/)
 
 ---
 
